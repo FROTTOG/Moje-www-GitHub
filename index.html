@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="cs" id="htmlDoc">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMWEB // Jan Minařík - Tvorba webových stránek</title>
+    
+    <meta name="description" content="Tvořím moderní weby pro váš byznys. Profesionální tvorba webových stránek a e-shopů na míru.">
+    <meta name="keywords" content="tvorba webu, webové stránky, e-shop, programátor, Jan Minařík, JMWEB, web na míru, tvorba e-shopu">
+    <meta name="author" content="Jan Minařík">
+    <meta property="og:title" content="JMWEB // Jan Minařík - Tvorba webových stránek">
+    <meta property="og:description" content="Navrhuji a programuji webové stránky, které vypadají skvěle, fungují rychle a přivádí zákazníky.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.jmweb.cz/">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f0f23">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "JMWEB | Jan Minařík",
+      "description": "Profesionální tvorba webových stránek, e-shopů a online konfigurátorů na míru.",
+      "url": "https://www.jmweb.cz/",
+      "founder": { "@type": "Person", "name": "Jan Minařík" },
+      "areaServed": "Česká republika",
+      "priceRange": "$$",
+      "makesOffer": [ { "@type": "Offer", "name": "Tvorba webových stránek" }, { "@type": "Offer", "name": "Tvorba e-shopů" } ],
+      "contactPoint": { "@type": "ContactPoint", "email": "janminarikcz@icloud.com", "contactType": "Zákaznická podpora" }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            --panel-bg: rgba(15, 23, 42, 0.8);
+            --panel-border: rgba(255, 255, 255, 0.1);
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.6);
+            --accent: #06b6d4;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(30, 41, 59, 0.5);
+        }
+
+        html { overflow-x: hidden; background-color: #0f0f23; }
+        body { background: var(--bg-gradient); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; overflow-x: hidden; width: 100%; position: relative; }
+
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #090914; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 6px; border: 3px solid #090914; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+        
+        * { scrollbar-width: thin; scrollbar-color: #1e293b #090914; box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+
+        :focus-visible { outline: 2px dashed var(--primary); outline-offset: 4px; }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .container-wrapper { width: 100%; max-width: 1440px; margin: 0 auto; padding: 80px 40px; z-index: 10; position: relative; }
+        @media (max-width: 768px) { .container-wrapper { padding: 50px 20px; } }
+
+        .section-title { font-size: 2.4rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.03em; background: linear-gradient(135deg, #fff, var(--primary), #ec4899); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 4s linear infinite; }
+        .section-subtitle { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 50px; max-width: 600px; line-height: 1.6; }
+
+        @keyframes pulse-glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.1); } }
+        @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes slide-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        #particleContainer { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 0; pointer-events: none; }
+        #particleContainer canvas { display: block; width: 100%; height: 100%; outline: none; border: none; }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; transition: all 0.4s ease; border-bottom: 1px solid transparent; }
+        header.scrolled { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        nav { width: 100%; max-width: 1440px; margin: 0 auto; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; transition: padding 0.4s ease; animation: slide-up 0.8s ease-out; }
+        header.scrolled nav { padding: 15px 40px; }
+        @media (max-width: 768px) { nav { padding: 20px; } header.scrolled nav { padding: 15px 20px; } }
+        
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white;}
+        .logo span { color: var(--text-muted); font-weight: 400; font-size: 0.9rem; margin-left: 5px; }
+        .logo i { color: var(--primary); }
+
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .lang-switch { display: flex; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 4px; border: 1px solid rgba(255,255,255,0.1); }
+        .lang-btn { background: transparent; border: none; color: #94a3b8; font-weight: 700; font-size: 0.8rem; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+        .lang-btn.active { background: var(--primary); color: #fff; }
+        .status-badge { font-size: 0.85rem; font-weight: 700; color: #10b981; padding: 8px 16px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.3); }
+        @media (max-width: 600px) { .status-badge { display: none; } }
+        
+        .hero { width: 100%; max-width: 1440px; margin: 0 auto; padding: 140px 40px 80px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; z-index: 1; min-height: 90vh;}
+        @media (max-width: 1024px) { .hero { grid-template-columns: 1fr; text-align: center; padding: 120px 20px 60px 20px; gap: 40px; } .hero-actions { justify-content: center; } }
+
+        .hero-text h1 { font-size: 4.2rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; margin-bottom: 20px; animation: slide-up 1s ease-out; }
+        @media (max-width: 768px) { .hero-text h1 { font-size: 2.5rem; min-height: 90px; } }
+        
+        .dynamic-text { background: linear-gradient(135deg, #fff 0%, #c7d2fe 25%, var(--primary) 50%, #ec4899 75%, #fff 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 5s linear infinite; display: inline-block; }
+        .type-cursor { display: inline-block; width: 4px; height: 0.9em; background-color: var(--primary); margin-left: 5px; vertical-align: middle; animation: blink 1s step-end infinite; }
+
+        .hero-text p { font-size: 1.2rem; color: #94a3b8; font-weight: 500; line-height: 1.6; margin-bottom: 40px; max-width: 600px; animation: slide-up 1.2s ease-out; }
+        @media (max-width: 1024px) { .hero-text p { margin-left: auto; margin-right: auto; } }
+
+        .hero-actions { display: flex; gap: 20px; align-items: center; perspective: 1000px; }
+        
+        .magnetic-wrap { display: inline-block; padding: 20px; margin: -20px; }
+        .btn-configurator { padding: 20px 40px; font-size: 1.1rem; font-weight: 800; border-radius: 24px; background: linear-gradient(135deg, var(--primary), #ec4899, #8b5cf6); background-size: 200% auto; color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 14px; box-shadow: 0 20px 40px rgba(139, 92, 246, 0.5), 0 0 60px rgba(236, 72, 153, 0.3); transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; user-select: none; animation: gradient-shift 3s linear infinite, slide-up 1.4s ease-out; position: relative; overflow: hidden; will-change: transform; }
+        .btn-configurator::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s; }
+        .btn-configurator:hover { box-shadow: 0 30px 60px rgba(139, 92, 246, 0.7), 0 0 80px rgba(236, 72, 153, 0.4); }
+        .btn-configurator:hover::before { left: 100%; }
+        .btn-configurator:active { transform: scale(0.95) !important; }
+
+        .preview-container-3d { transform-style: preserve-3d; transition: transform 0.1s ease-out; will-change: transform; perspective: 1000px; }
+        .services-panel { background: var(--panel-bg); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); border: 1px solid var(--panel-border); border-radius: 40px; padding: 40px; box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.8), 0 0 60px rgba(139, 92, 246, 0.15); display: flex; flex-direction: column; gap: 20px; text-align: left; animation: slide-up 1.6s ease-out; }
+        @media (max-width: 480px) { .services-panel { padding: 20px; border-radius: 24px; } }
+        .services-panel h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; font-weight: 800; background: linear-gradient(90deg, #64748b, #8b5cf6, #64748b); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 4s linear infinite; }
+
+        .service-card { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 24px; display: flex; gap: 20px; align-items: center; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; overflow: hidden; user-select: none; }
+        @media (hover: hover) {
+            .service-card::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(139, 92, 246, 0.15), transparent 45%); pointer-events: none; z-index: 1; }
+            .service-card:hover { background: rgba(30, 41, 59, 0.6); border-color: rgba(139, 92, 246, 0.5); transform: translateX(10px) scale(1.02); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); }
+        }
+        .service-card i { font-size: 2rem; color: #475569; transition: all 0.3s; z-index: 2; }
+        .service-card:hover i { color: #8b5cf6; transform: scale(1.2) rotate(5deg); text-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+        .service-card-content { z-index: 2; }
+        .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; color: #fff; }
+        .service-card p { font-size: 0.85rem; color: #94a3b8; line-height: 1.4; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .info-box { background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.05); padding: 30px; border-radius: 24px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .info-box:hover { background: rgba(15, 23, 42, 0.7); border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .info-box i { font-size: 2.5rem; background: linear-gradient(135deg, var(--accent), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; display: inline-block; }
+        .info-box h3 { font-size: 1.2rem; color: #fff; margin-bottom: 12px; font-weight: 800; }
+        .info-box p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+
+        .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 50px; }
+        .browser-mockup { background: #1e293b; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; }
+        .browser-mockup:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(139, 92, 246, 0.25); border-color: rgba(139, 92, 246, 0.4); z-index: 5; }
+        .browser-header { height: 35px; background: rgba(15, 23, 42, 0.9); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 0 16px; gap: 8px; }
+        .browser-header .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .browser-header .dot.r { background: #ef4444; } .browser-header .dot.y { background: #f59e0b; } .browser-header .dot.g { background: #10b981; }
+        .browser-header .url-bar { margin-left: 15px; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 4px 12px; font-size: 0.75rem; color: #94a3b8; font-family: monospace; display: flex; align-items: center; gap: 8px; }
+        
+        .iframe-wrap { width: 100%; padding-top: 65%; position: relative; overflow: hidden; background: #0f172a; }
+        .iframe-wrap iframe { position: absolute; top: 0; left: 0; width: 400%; height: 400%; transform: scale(0.25); transform-origin: 0 0; border: none; pointer-events: none; }
+        
+        .iframe-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 15px; opacity: 0; transition: opacity 0.3s ease; }
+        .browser-mockup:hover .iframe-overlay { opacity: 1; }
+        .visit-btn { background: linear-gradient(135deg, var(--primary), #ec4899); color: #fff; padding: 12px 24px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4); transform: translateY(10px); transition: transform 0.3s ease; }
+        .browser-mockup:hover .visit-btn { transform: translateY(0); }
+
+        .ref-info { padding: 20px; }
+        .ref-info h4 { font-size: 1.25rem; color: #fff; margin-bottom: 6px; font-weight: 800; }
+        .ref-info p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+        .ref-tags { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+        .ref-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 8px; font-size: 0.7rem; color: #cbd5e1; font-weight: 600; }
+
+        .faq-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .faq-item { background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; }
+        .faq-item.active { background: rgba(30, 41, 59, 0.6); border-color: rgba(139, 92, 246, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .faq-question { padding: 24px; width: 100%; text-align: left; background: transparent; border: none; cursor: pointer; color: #fff; font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question i { color: var(--primary); transition: transform 0.3s ease; }
+        .faq-item.active .faq-question i { transform: rotate(45deg); color: #ec4899; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1); padding: 0 24px; color: #94a3b8; line-height: 1.6; font-size: 0.95rem; }
+        .faq-item.active .faq-answer { padding-bottom: 24px; max-height: 300px; }
+
+        footer { width: 100%; max-width: 1440px; margin: 0 auto; padding: 30px 40px; border-top: 1px solid var(--panel-border); display: flex; justify-content: space-between; font-size: 0.85rem; color: #475569; font-weight: 600; z-index: 10; gap: 20px; }
+        @media (max-width: 600px) { footer { flex-direction: column; text-align: center; align-items: center; } }
+    </style>
+</head>
+<body>
+
+    <div id="particleContainer" aria-hidden="true"></div>
+
+    <header id="mainHeader">
+        <nav aria-label="Hlavní navigace">
+            <a href="/" class="logo" aria-label="Návrat na domovskou stránku"><i class="fa-solid fa-code" aria-hidden="true"></i> JMWEB <span>/ Jan Minařík</span></a>
+            
+            <div class="nav-right">
+                <div class="lang-switch" aria-label="Přepínač jazyků">
+                    <button class="lang-btn active" onclick="setLang('cz')">CZ</button>
+                    <button class="lang-btn" onclick="setLang('en')">EN</button>
+                </div>
+                <div class="status-badge" data-i18n="nav_status"><i class="fa-solid fa-circle" style="font-size: 0.6rem; margin-right: 5px; vertical-align: middle; animation: pulse-glow 2s ease-in-out infinite;" aria-hidden="true"></i> PŘIJÍMÁM PROJEKTY</div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero reveal" id="heroSection">
+            <div class="hero-text">
+                <h1 data-i18n="hero_title_1">Tvořím <br><span class="dynamic-text" id="typewriterText">moderní weby</span><span class="type-cursor" aria-hidden="true"></span><br>pro váš byznys.</h1>
+                <p data-i18n="hero_desc">Navrhuji a programuji webové stránky, které vypadají skvěle, fungují rychle a přivádí zákazníky. Žádné šablony, vše stavím na míru vašim cílům.</p>
+                
+                <div class="hero-actions">
+                    <div class="magnetic-wrap" id="magnetBtnWrap">
+                        <a href="konfigurator.html" class="btn-configurator" id="btnConfigurator">
+                            <span data-i18n="hero_btn">Spustit online konfigurátor</span>
+                            <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-container-3d" id="parallaxContainer">
+                <div class="services-panel" id="mainPanel">
+                    <h2 data-i18n="srv_title">Co nabízím</h2>
+                    
+                    <div class="service-card">
+                        <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
+                        <div class="service-card-content">
+                            <h3 data-i18n="srv_1_h">Weby na zakázku</h3>
+                            <p data-i18n="srv_1_p">Vytvořím pro vás profesionální web, který bude rychlý, moderní a snadno ovladatelný.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                        <div class="service-card-content">
+                            <h3 data-i18n="srv_2_h">E-shopy</h3>
+                            <p data-i18n="srv_2_p">Naprogramuji e-shop, kam se vaši zákazníci budou rádi vracet a snadno nakupovat.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
+                        <div class="service-card-content">
+                            <h3 data-i18n="srv_3_h">Optimalizace a údržba</h3>
+                            <p data-i18n="srv_3_p">Zrychlím váš existující web a vylepším ho, aby fungoval lépe a přiváděl více návštěvníků.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-wrapper reveal">
+            <h2 class="section-title" data-i18n="proc_title">Jak probíhá spolupráce?</h2>
+            <p class="section-subtitle" data-i18n="proc_sub">Zakládám si na transparentnosti a plynulé komunikaci. O svůj projekt se nemusíte bát, celým procesem vás provedu.</p>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                    <h3 data-i18n="proc_1_h">1. Konzultace a ceník</h3>
+                    <p data-i18n="proc_1_p">Společně si definujeme, co váš web potřebuje. Následně sestavím transparentní cenovou nabídku bez skrytých háčků.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
+                    <h3 data-i18n="proc_2_h">2. Grafický návrh</h3>
+                    <p data-i18n="proc_2_p">Než napíšu první řádek kódu, připravím interaktivní vizuální návrh (UI/UX) přesně podle vaší firemní identity a cílů.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-code" aria-hidden="true"></i>
+                    <h3 data-i18n="proc_3_h">3. Samotný vývoj</h3>
+                    <p data-i18n="proc_3_p">Grafiku převedu do superrychlého čistého kódu, nastavím administraci a zajistím perfektní zobrazení i na mobilech.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+                    <h3 data-i18n="proc_4_h">4. Testování a spuštění</h3>
+                    <p data-i18n="proc_4_p">Web důkladně otestujeme, napojíme na analytiku, zajistíme základní SEO a slavnostně ho vypustíme do světa.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-wrapper reveal">
+            <h2 class="section-title" data-i18n="ref_title">Vybrané reference</h2>
+            <p class="section-subtitle" data-i18n="ref_sub">Prohlédněte si živé náhledy webů mých klientů. Zkuste si přes ně přejet myší.</p>
+
+            <div class="ref-grid">
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
+                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://vdstavby.cz</div>
+                    </div>
+                    <div class="iframe-wrap">
+                        <iframe src="https://vdstavby.cz" loading="lazy" tabindex="-1" title="Náhled webu VD Stavby"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://vdstavby.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
+                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ref-info">
+                        <h4>VD Stavby</h4>
+                        <p data-i18n="ref_1_p">Moderní prezentace stavební firmy s důrazem na přehlednost služeb, ukázky referencí a kontaktní formulář.</p>
+                        <div class="ref-tags">
+                            <span class="ref-tag" data-i18n="tag_multi">Vícestránkový web</span>
+                            <span class="ref-tag" data-i18n="tag_ref">Reference</span>
+                            <span class="ref-tag" data-i18n="tag_form">Formulář</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
+                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://ddhomeinvest.cz</div>
+                    </div>
+                    <div class="iframe-wrap">
+                        <iframe src="https://ddhomeinvest.cz" loading="lazy" tabindex="-1" title="Náhled webu DD Home Invest"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ddhomeinvest.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
+                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ref-info">
+                        <h4>DD Home Invest</h4>
+                        <p data-i18n="ref_2_p">Pokročilý jednostránkový web (One-page) s integrovaným katalogem a propracovaným kontaktním formulářem.</p>
+                        <div class="ref-tags">
+                            <span class="ref-tag" data-i18n="tag_one">One-page web</span>
+                            <span class="ref-tag" data-i18n="tag_cat">Katalog</span>
+                            <span class="ref-tag" data-i18n="tag_form">Kontaktní formulář</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
+                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://dvstav.cz</div>
+                    </div>
+                    <div class="iframe-wrap">
+                        <iframe src="https://dvstav.cz" loading="lazy" tabindex="-1" title="Náhled webu DV Stav"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://dvstav.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
+                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ref-info">
+                        <h4>DV Stav</h4>
+                        <p data-i18n="ref_3_p">Profesionální vícestránkový web pro stavební práce. Obsahuje sekci referencí a interaktivní mapu se sídlem firmy.</p>
+                        <div class="ref-tags">
+                            <span class="ref-tag" data-i18n="tag_multi">Vícestránkový web</span>
+                            <span class="ref-tag" data-i18n="tag_ref">Reference</span>
+                            <span class="ref-tag" data-i18n="tag_map">Interaktivní mapa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
+                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://myskyvyroba.cz</div>
+                    </div>
+                    <div class="iframe-wrap">
+                        <iframe src="https://myskyvyroba.cz" loading="lazy" tabindex="-1" title="Náhled webu Myšky výroba"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://myskyvyroba.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
+                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ref-info">
+                        <h4>Myšky Výroba</h4>
+                        <p data-i18n="ref_4_p">Katalogový vícestránkový web a prezentace zakázkové výroby originálních dekorací do domácnosti.</p>
+                        <div class="ref-tags">
+                            <span class="ref-tag" data-i18n="tag_multi">Vícestránkový web</span>
+                            <span class="ref-tag" data-i18n="tag_cat">Katalog produktů</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
+                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://stavbycernik.cz</div>
+                    </div>
+                    <div class="iframe-wrap">
+                        <iframe src="https://stavbycernik.cz" loading="lazy" tabindex="-1" title="Náhled webu Stavby Černík"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://stavbycernik.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
+                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ref-info">
+                        <h4>Stavby Černík</h4>
+                        <p data-i18n="ref_5_p">Moderní webová prezentace pro stavební společnost. Projekt je aktuálně ve fázi aktivního vývoje.</p>
+                        <div class="ref-tags">
+                            <span class="ref-tag" style="background: rgba(245, 158, 11, 0.2); color: #fcd34d; border-color: rgba(245, 158, 11, 0.3);" data-i18n="tag_dev"><i class="fa-solid fa-person-digging" aria-hidden="true"></i> Ve vývoji</span>
+                            <span class="ref-tag" data-i18n="tag_corp">Firemní web</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="container-wrapper reveal">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 class="section-title" data-i18n="faq_title">Často kladené dotazy</h2>
+                <p class="section-subtitle" style="margin: 0 auto;" data-i18n="faq_sub">Odpovědi na otázky, na které se klienti ptají nejčastěji.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-1">
+                        <span data-i18n="faq_1_q">Jak dlouho trvá tvorba webu?</span> <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-1" role="region">
+                        <p data-i18n="faq_1_a">Záleží na složitosti. Jednoduchá firemní vizitka může být hotová do týdne. Rozsáhlejší vícestránkový web nebo menší e-shop zabere zhruba 2 až 4 týdny. V konfigurátoru vždy ihned uvidíte odhadovanou dobu realizace pro vaši konkrétní sestavu.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-2">
+                        <span data-i18n="faq_2_q">Co ode mě budete potřebovat?</span> <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-2" role="region">
+                        <p data-i18n="faq_2_a">Na začátku mi stačí stručně popsat, čím se zabýváte a jaký je cíl webu. Pokud máte logo, fotky a texty, je to skvělé. Pokud ne, postarám se o to nebo vám pomohu najít vhodné řešení (např. copywriting nebo úpravu loga).</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-3">
+                        <span data-i18n="faq_3_q">Budu si moci web upravovat sám?</span> <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-3" role="region">
+                        <p data-i18n="faq_3_a">Ano, pokud si to budete přát. Většinu projektů stavím tak, abyste měli k dispozici přehlednou administraci (CMS), přes kterou si zvládnete sami upravit texty, přidat fotky nebo napsat článek na blog, a to i bez znalosti programování.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-wrapper reveal" style="text-align: center; padding-top: 40px; padding-bottom: 80px;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg, #fff, #8b5cf6, #ec4899); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 4s linear infinite;" data-i18n="cta_title">Máte zájem o spolupráci?</h2>
+            <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;" data-i18n="cta_sub">Proberme váš projekt. Napište mi e-mail nebo si rovnou projděte cenový odhad v mém konfigurátoru.</p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:janminarikcz@icloud.com" aria-label="Napsat e-mail" style="display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; font-size: 1.1rem; font-weight: 700; border-radius: 24px; background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: white; text-decoration: none; box-shadow: 0 20px 40px rgba(6, 182, 212, 0.4), 0 0 60px rgba(139, 92, 246, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    janminarikcz@icloud.com
+                </a>
+                <a href="konfigurator.html" style="display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; font-size: 1.1rem; font-weight: 700; border-radius: 24px; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); color: white; text-decoration: none; transition: all 0.3s ease;">
+                    <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                    <span data-i18n="cta_btn">Online nacenění</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>&copy; 2026 JMWEB // Jan Minařík. <span data-i18n="footer_rights">Všechna práva vyhrazena.</span></div>
+        <div>STABLE RELEASE // V4.0 I18N</div>
+    </footer>
+
+    <!-- Three.js - Asynchronní načtení grafického enginu -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script>
+        // i18n Překladový Engine
+        const translations = {
+            cz: {
+                nav_status: '<i class="fa-solid fa-circle" style="font-size: 0.6rem; margin-right: 5px; vertical-align: middle; animation: pulse-glow 2s ease-in-out infinite;"></i> PŘIJÍMÁM PROJEKTY',
+                hero_title_1: 'Tvořím <br><span class="dynamic-text" id="typewriterText">moderní weby</span><span class="type-cursor"></span><br>pro váš byznys.',
+                hero_desc: 'Navrhuji a programuji webové stránky, které vypadají skvěle, fungují rychle a přivádí zákazníky. Žádné šablony, vše stavím na míru vašim cílům.',
+                hero_btn: 'Spustit online konfigurátor',
+                srv_title: 'Co nabízím',
+                srv_1_h: 'Weby na zakázku', srv_1_p: 'Vytvořím pro vás profesionální web, který bude rychlý, moderní a snadno ovladatelný.',
+                srv_2_h: 'E-shopy', srv_2_p: 'Naprogramuji e-shop, kam se vaši zákazníci budou rádi vracet a snadno nakupovat.',
+                srv_3_h: 'Optimalizace a údržba', srv_3_p: 'Zrychlím váš existující web a vylepším ho, aby fungoval lépe a přiváděl více návštěvníků.',
+                proc_title: 'Jak probíhá spolupráce?', proc_sub: 'Zakládám si na transparentnosti a plynulé komunikaci. O svůj projekt se nemusíte bát, celým procesem vás provedu.',
+                proc_1_h: '1. Konzultace a ceník', proc_1_p: 'Společně si definujeme, co váš web potřebuje. Následně sestavím transparentní cenovou nabídku bez skrytých háčků.',
+                proc_2_h: '2. Grafický návrh', proc_2_p: 'Než napíšu první řádek kódu, připravím interaktivní vizuální návrh (UI/UX) přesně podle vaší firemní identity a cílů.',
+                proc_3_h: '3. Samotný vývoj', proc_3_p: 'Grafiku převedu do superrychlého čistého kódu, nastavím administraci a zajistím perfektní zobrazení i na mobilech.',
+                proc_4_h: '4. Testování a spuštění', proc_4_p: 'Web důkladně otestujeme, napojíme na analytiku, zajistíme základní SEO a slavnostně ho vypustíme do světa.',
+                ref_title: 'Vybrané reference', ref_sub: 'Prohlédněte si živé náhledy webů mých klientů. Zkuste si přes ně přejet myší.',
+                ref_btn: 'Navštívit web',
+                ref_1_p: 'Moderní prezentace stavební firmy s důrazem na přehlednost služeb, ukázky referencí a kontaktní formulář.',
+                ref_2_p: 'Pokročilý jednostránkový web (One-page) s integrovaným katalogem a propracovaným kontaktním formulářem.',
+                ref_3_p: 'Profesionální vícestránkový web pro stavební práce. Obsahuje sekci referencí a interaktivní mapu se sídlem firmy.',
+                ref_4_p: 'Katalogový vícestránkový web a prezentace zakázkové výroby originálních dekorací do domácnosti.',
+                ref_5_p: 'Moderní webová prezentace pro stavební společnost. Projekt je aktuálně ve fázi aktivního vývoje.',
+                tag_multi: 'Vícestránkový web', tag_one: 'One-page web', tag_ref: 'Reference', tag_form: 'Formulář', tag_cat: 'Katalog', tag_map: 'Interaktivní mapa', tag_dev: '<i class="fa-solid fa-person-digging"></i> Ve vývoji', tag_corp: 'Firemní web',
+                faq_title: 'Často kladené dotazy', faq_sub: 'Odpovědi na otázky, na které se klienti ptají nejčastěji.',
+                faq_1_q: 'Jak dlouho trvá tvorba webu?', faq_1_a: 'Záleží na složitosti. Jednoduchá firemní vizitka může být hotová do týdne. Rozsáhlejší vícestránkový web nebo menší e-shop zabere zhruba 2 až 4 týdny. V konfigurátoru vždy ihned uvidíte odhadovanou dobu realizace pro vaši konkrétní sestavu.',
+                faq_2_q: 'Co ode mě budete potřebovat?', faq_2_a: 'Na začátku mi stačí stručně popsat, čím se zabýváte a jaký je cíl webu. Pokud máte logo, fotky a texty, je to skvělé. Pokud ne, postarám se o to nebo vám pomohu najít vhodné řešení (např. copywriting nebo úpravu loga).',
+                faq_3_q: 'Budu si moci web upravovat sám?', faq_3_a: 'Ano, pokud si to budete přát. Většinu projektů stavím tak, abyste měli k dispozici přehlednou administraci (CMS), přes kterou si zvládnete sami upravit texty, přidat fotky nebo napsat článek na blog, a to i bez znalosti programování.',
+                cta_title: 'Máte zájem o spolupráci?', cta_sub: 'Proberme váš projekt. Napište mi e-mail nebo si rovnou projděte cenový odhad v mém konfigurátoru.', cta_btn: 'Online nacenění',
+                footer_rights: 'Všechna práva vyhrazena.'
+            },
+            en: {
+                nav_status: '<i class="fa-solid fa-circle" style="font-size: 0.6rem; margin-right: 5px; vertical-align: middle; animation: pulse-glow 2s ease-in-out infinite;"></i> ACCEPTING PROJECTS',
+                hero_title_1: 'I craft <br><span class="dynamic-text" id="typewriterText">modern websites</span><span class="type-cursor"></span><br>for your business.',
+                hero_desc: 'I design and code websites that look great, run fast, and bring customers. No templates, everything built custom for your goals.',
+                hero_btn: 'Launch online configurator',
+                srv_title: 'What I offer',
+                srv_1_h: 'Custom Websites', srv_1_p: 'I will create a professional, fast, modern, and easy-to-manage website for you.',
+                srv_2_h: 'E-commerce', srv_2_p: 'I code e-shops where your customers will love to return and shop easily.',
+                srv_3_h: 'Optimization & Maintanance', srv_3_p: 'I will speed up your existing website and improve it to bring more visitors.',
+                proc_title: 'How does it work?', proc_sub: 'I value transparency and smooth communication. I will guide you through the entire process.',
+                proc_1_h: '1. Consultation & Quote', proc_1_p: 'Together we define what your website needs. Then I create a transparent quote with no hidden catches.',
+                proc_2_h: '2. UI/UX Design', proc_2_p: 'Before I write the first line of code, I prepare an interactive visual design matching your brand.',
+                proc_3_h: '3. Development', proc_3_p: 'I convert the design into super-fast clean code, set up the CMS, and ensure perfect mobile responsiveness.',
+                proc_4_h: '4. Testing & Launch', proc_4_p: 'We thoroughly test the website, connect analytics, ensure basic SEO, and launch it to the world.',
+                ref_title: 'Selected References', ref_sub: 'Explore live previews of my clients\' websites. Try hovering over them.',
+                ref_btn: 'Visit website',
+                ref_1_p: 'Modern presentation of a construction company with an emphasis on clarity, portfolio, and contact forms.',
+                ref_2_p: 'Advanced One-page website with an integrated product catalog and sophisticated contact form.',
+                ref_3_p: 'Professional multi-page website for construction work. Includes a reference section and interactive map.',
+                ref_4_p: 'Catalog multi-page website presenting custom production of original home decorations.',
+                ref_5_p: 'Modern web presentation for a construction company. The project is currently in active development.',
+                tag_multi: 'Multi-page', tag_one: 'One-page', tag_ref: 'Portfolio', tag_form: 'Form', tag_cat: 'Catalog', tag_map: 'Interactive map', tag_dev: '<i class="fa-solid fa-person-digging"></i> In development', tag_corp: 'Corporate',
+                faq_title: 'Frequently Asked Questions', faq_sub: 'Answers to the questions clients ask most often.',
+                faq_1_q: 'How long does it take?', faq_1_a: 'It depends on complexity. A simple business card site can be done in a week. Larger sites or e-shops take 2-4 weeks. You can see the estimated time in the configurator.',
+                faq_2_q: 'What will you need from me?', faq_2_a: 'Initially, just a brief description of what you do and your goal. If you have a logo, photos, and texts, great. If not, I will help you solve it.',
+                faq_3_q: 'Can I edit the website myself?', faq_3_a: 'Yes, if you wish. Most projects include a clear administration (CMS) where you can easily edit texts, add photos, or write a blog post without programming skills.',
+                cta_title: 'Interested in working together?', cta_sub: 'Let\'s discuss your project. Email me or get a direct price estimate in my configurator.', cta_btn: 'Online Quote',
+                footer_rights: 'All rights reserved.'
+            }
+        };
+
+        const typewriterWords = {
+            cz: ["moderní weby", "výkonné e-shopy", "digitální zážitky", "čistý kód"],
+            en: ["modern websites", "fast e-shops", "digital experiences", "clean code"]
+        };
+
+        let currentLang = 'cz';
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+
+            // Restart typewriter
+            wordIndex = 0; charIndex = 0; isDeleting = false;
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(e => {}); });
+        }
+
+        let audioCtx = null;
+        function initAudio() { if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } if (audioCtx.state === 'suspended') { audioCtx.resume(); } }
+        window.addEventListener('click', initAudio, { once: true });
+        window.addEventListener('touchstart', initAudio, { once: true });
+        
+        function playSound(type) {
+            initAudio();
+            if (!audioCtx || audioCtx.state === 'suspended') return;
+            let osc = audioCtx.createOscillator(); let gain = audioCtx.createGain();
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            if (type === 'hover') { osc.type = 'sine'; osc.frequency.setValueAtTime(520, audioCtx.currentTime); gain.gain.setValueAtTime(0.004, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.04); osc.start(); osc.stop(audioCtx.currentTime + 0.04); } 
+            else if (type === 'click') { osc.type = 'triangle'; osc.frequency.setValueAtTime(280, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.12); gain.gain.setValueAtTime(0.04, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.12); osc.start(); osc.stop(audioCtx.currentTime + 0.12); }
+        }
+
+        window.addEventListener('load', () => {
+            const isMobileDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth <= 1024);
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); 
+            document.getElementById('particleContainer').appendChild(renderer.domElement);
+
+            const particlesCount = isMobileDevice ? 800 : 2500;
+            const posArray = new Float32Array(particlesCount * 3);
+            const colorsArray = new Float32Array(particlesCount * 3);
+            const color1 = new THREE.Color('#8b5cf6'); const color2 = new THREE.Color('#06b6d4');
+
+            for(let i = 0; i < particlesCount * 3; i+=3) {
+                posArray[i] = (Math.random() - 0.5) * 15; posArray[i+1] = (Math.random() - 0.5) * 15; posArray[i+2] = (Math.random() - 0.5) * 15;
+                const mix = Math.random(); const mixedColor = color1.clone().lerp(color2, mix);
+                colorsArray[i] = mixedColor.r; colorsArray[i+1] = mixedColor.g; colorsArray[i+2] = mixedColor.b;
+            }
+
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
+
+            const canvasTex = document.createElement('canvas'); canvasTex.width = 32; canvasTex.height = 32;
+            const ctxTex = canvasTex.getContext('2d'); const gradient = ctxTex.createRadialGradient(16, 16, 0, 16, 16, 16);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)'); gradient.addColorStop(1, 'rgba(255,255,255,0)');
+            ctxTex.fillStyle = gradient; ctxTex.fillRect(0,0,32,32);
+            const texture = new THREE.CanvasTexture(canvasTex);
+
+            const material = new THREE.PointsMaterial({ size: isMobileDevice ? 0.05 : 0.08, vertexColors: true, transparent: true, opacity: 0.8, map: texture, blending: THREE.AdditiveBlending, depthWrite: false });
+            const particlesMesh = new THREE.Points(geometry, material); scene.add(particlesMesh); camera.position.z = 4;
+
+            let mouseX = 0; let mouseY = 0;
+            document.addEventListener('mousemove', (e) => { mouseX = (e.clientX / window.innerWidth - 0.5) * 2; mouseY = (e.clientY / window.innerHeight - 0.5) * 2; });
+
+            let isWebGLVisible = true;
+            const heroObserver = new IntersectionObserver((entries) => { isWebGLVisible = entries[0].isIntersecting; });
+            heroObserver.observe(document.getElementById('heroSection'));
+
+            const clock = new THREE.Clock();
+            function animate() {
+                requestAnimationFrame(animate);
+                if (!isWebGLVisible) return;
+                const elapsedTime = clock.getElapsedTime();
+                particlesMesh.rotation.y = elapsedTime * 0.05; particlesMesh.rotation.x = elapsedTime * 0.02;
+                if(!isMobileDevice) { camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05; camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.05; camera.lookAt(scene.position); }
+                renderer.render(scene, camera);
+            }
+            animate();
+            window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+        });
+
+        // TYPEWRITER EFEKT
+        let wordIndex = 0; let charIndex = 0; let isDeleting = false;
+        const typeTarget = document.getElementById("typewriterText");
+
+        function typeEffect() {
+            const wordsList = typewriterWords[currentLang];
+            const currentWord = wordsList[wordIndex];
+            if (isDeleting) { typeTarget.textContent = currentWord.substring(0, charIndex - 1); charIndex--; } 
+            else { typeTarget.textContent = currentWord.substring(0, charIndex + 1); charIndex++; }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+            if (!isDeleting && charIndex === currentWord.length) { typeSpeed = 2000; isDeleting = true; } 
+            else if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % wordsList.length; typeSpeed = 500; }
+            setTimeout(typeEffect, typeSpeed);
+        }
+        setTimeout(typeEffect, 1000);
+
+        const isMobileDeviceGlobal = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth <= 1024);
+        const containerCards = document.getElementById('parallaxContainer');
+        const panelCards = document.getElementById('mainPanel');
+        const magnetBtnWrap = document.getElementById('magnetBtnWrap');
+        const magnetBtn = document.getElementById('btnConfigurator');
+
+        document.addEventListener('mousemove', (e) => {
+            if(window.innerWidth > 1024) {
+                if(containerCards && panelCards) {
+                    const cx = window.innerWidth / 2; const cy = window.innerHeight / 2;
+                    const dx = e.clientX - cx; const dy = e.clientY - cy;
+                    containerCards.style.transform = `rotateX(${(dy / cy) * -4}deg) rotateY(${(dx / cx) * 4}deg)`;
+                    panelCards.style.boxShadow = `${(dx / cx) * -15}px ${(dy / cy) * -15}px 60px -10px rgba(0, 0, 0, 0.7)`;
+                }
+            }
+            if(e.target && e.target.closest && e.target.closest('.service-card')) {
+                let card = e.target.closest('.service-card');
+                let rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+                card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+            }
+        });
+
+        if(!isMobileDeviceGlobal && magnetBtnWrap && magnetBtn) {
+            magnetBtnWrap.addEventListener('mousemove', (e) => {
+                const rect = magnetBtnWrap.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2; const y = e.clientY - rect.top - rect.height / 2;
+                magnetBtn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.02)`;
+            });
+            magnetBtnWrap.addEventListener('mouseleave', () => { magnetBtn.style.transform = 'translate(0px, 0px) scale(1)'; });
+        }
+
+        document.querySelectorAll('a, button, input, textarea, .service-card, .info-box, .browser-mockup, .faq-question').forEach(el => {
+            el.addEventListener('mouseenter', () => { if(!isMobileDeviceGlobal) playSound('hover'); });
+            el.addEventListener('touchstart', () => { playSound('hover'); }, { passive: true });
+        });
+
+        document.querySelectorAll('.btn-configurator, .visit-btn').forEach(btn => {
+            btn.addEventListener('click', () => { playSound('click'); if (navigator.vibrate) navigator.vibrate(15); });
+        });
+
+        const reveals = document.querySelectorAll('.reveal');
+        const header = document.getElementById('mainHeader');
+        const scrollObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
+        reveals.forEach(reveal => { scrollObserver.observe(reveal); });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled'); }
+        });
+
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement; const isActive = faqItem.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(item => { item.classList.remove('active'); item.querySelector('.faq-question').setAttribute('aria-expanded', 'false'); });
+                if (!isActive) { faqItem.classList.add('active'); button.setAttribute('aria-expanded', 'true'); playSound('click'); }
+            });
+        });
+    </script>
+</body>
+</html>
