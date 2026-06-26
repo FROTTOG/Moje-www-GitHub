@@ -37,17 +37,27 @@
 
         /* HEADER */
         header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        nav { width: 100%; max-width: 1440px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
-        @media (max-width: 768px) { nav { padding: 15px 20px; } }
+        nav { width: 100%; max-width: 1440px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+        @media (max-width: 768px) { 
+            nav { padding: 15px 20px; gap:10px; }
+            .logo span { display:none; }
+        }
         
         .logo { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
         .logo span { color: var(--text-muted); font-weight: 400; font-size: 0.9rem; }
         .logo i { color: var(--primary); }
         
-        .nav-controls { display: flex; align-items: center; gap: 15px; }
+        .nav-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .switch-group { display: flex; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 4px; border: 1px solid rgba(255,255,255,0.1); gap: 2px; }
-        .switch-btn { background: transparent; border: none; color: #94a3b8; font-weight: 700; font-size: 0.8rem; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+        .switch-btn { background: transparent; border: none; color: #94a3b8; font-weight: 700; font-size: 0.75rem; padding: 5px 8px; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
         .switch-btn.active { background: var(--primary); color: #fff; }
+        @media (max-width: 640px) {
+            nav { padding: 14px 16px; align-items: flex-start; }
+            .logo { width: 100%; font-size: 1.15rem; }
+            .nav-controls { width: 100%; justify-content: space-between; gap: 10px; }
+            .switch-group { flex: 1; justify-content: center; min-width: 0; }
+            .switch-btn { flex: 1; min-width: 0; padding: 8px 6px; font-size: 0.72rem; }
+        }
         
         /* MAIN CONTAINER */
         .main-container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; max-width: 1440px; margin: 0 auto; padding: 120px 40px 80px; min-height: 100vh; }
@@ -98,6 +108,38 @@
         .checkbox-card-content h4 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
         .checkbox-card-content span { font-size: 0.85rem; color: var(--accent); font-weight: 700; }
 
+        /* Checkbox card wrapper with sub-options */
+        .checkbox-card-wrapper { display: flex; flex-direction: column; gap: 8px; }
+        .sub-options { 
+            display: none; 
+            grid-template-columns: 1fr;
+            gap: 6px; 
+            margin-left: 44px; 
+            padding-left: 12px; 
+            border-left: 2px solid rgba(139,92,246,0.3);
+        }
+        .checkbox-card-wrapper.open .sub-options { display: grid; }
+        .sub-option-btn { 
+            display: flex; 
+            gap: 8px; 
+            align-items: center; 
+            padding: 10px 12px; 
+            background: rgba(139,92,246,0.1); 
+            border: 1px solid rgba(139,92,246,0.3); 
+            border-radius: 10px; 
+            cursor: pointer; 
+            color: var(--text-main); 
+            font-weight: 600;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .sub-option-btn:hover { background: rgba(139,92,246,0.2); border-color: var(--primary); }
+        .sub-option-btn.active { background: rgba(139,92,246,0.25); border-color: var(--primary); }
+        .sub-price { margin-left: auto; color: var(--accent); font-weight: 700; font-size: 0.8rem; }
+        @media (max-width: 640px) {
+            .sub-options { margin-left: 0; padding-left: 10px; }
+        }
+
         /* NAVIGATION BUTTONS */
         .nav-buttons { display: flex; gap: 15px; justify-content: space-between; margin-top: 10px; }
         .btn { padding: 16px 32px; border: none; border-radius: 14px; font-size: 1rem; font-weight: 800; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
@@ -108,10 +150,14 @@
         .btn-success { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4); }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .btn-hidden { visibility: hidden; }
+        @media (max-width: 640px) {
+            .nav-buttons { flex-direction: column-reverse; }
+            .btn, .nav-buttons .btn { width: 100%; justify-content: center; }
+        }
 
         /* RIGHT PANEL - PREVIEW */
         .preview-panel { position: sticky; top: 100px; height: fit-content; display: flex; flex-direction: column; gap: 25px; }
-        @media (max-width: 1024px) { .preview-panel { position: static; order: -1; } }
+        @media (max-width: 1024px) { .preview-panel { position: static; order: 0; } }
 
         /* PRICE SUMMARY */
         .summary-card { background: var(--panel-bg); backdrop-filter: blur(20px); border: 1px solid var(--panel-border); border-radius: 24px; padding: 30px; border-left: 4px solid var(--primary); }
@@ -122,9 +168,47 @@
 
         /* 3D MACBOOK PREVIEW */
         .macbook-container { perspective: 1500px; transform-style: preserve-3d; }
-        .macbook { transform-style: preserve-3d; transition: transform 0.3s ease-out; width: 100%; }
-        .macbook-base { background: linear-gradient(180deg, #94a3b8 0%, #475569 50%, #1e293b 100%); width: 100%; height: 20px; border-radius: 0 0 10px 10px; transform: rotateX(-80deg); transform-origin: top; position: relative; }
-        .macbook-base::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 30%; height: 8px; background: #0f172a; border-radius: 0 0 10px 10px; }
+        .macbook { transform-style: preserve-3d; transition: transform 0.3s ease-out; width: 100%; transform: rotateX(6deg) rotateY(-8deg); }
+        .macbook-base { 
+            background: linear-gradient(180deg, #94a3b8 0%, #475569 50%, #1e293b 100%); 
+            width: 100%; 
+            height: 150px; 
+            border-radius: 4px 4px 24px 24px; 
+            transform: rotateX(-74deg); 
+            transform-origin: top; 
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            padding: 12px 14px 0;
+            margin-top: -4px;
+        }
+        .macbook-base::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+            width: 32%;
+            height: 36px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.15);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .macbook-keyboard {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 4px;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 6px;
+            border-radius: 6px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.7), 0 1px 0 rgba(255,255,255,0.1);
+            margin-bottom: 8px;
+        }
+        .macbook-key {
+            height: 9px;
+            background: #111827;
+            border-radius: 2px;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.08), 0 1.5px 2px rgba(0,0,0,0.8);
+        }
         .macbook-screen { background: linear-gradient(135deg, #334155, #1e293b); border-radius: 20px; padding: 20px; position: relative; box-shadow: 0 50px 100px rgba(0,0,0,0.8); transform-style: preserve-3d; }
         .macbook-notch { width: 80px; height: 12px; background: #000; border-radius: 0 0 10px 10px; margin: -20px auto 20px; position: relative; z-index: 10; }
         
@@ -136,13 +220,28 @@
         .dot-y { background: #f59e0b; }
         .dot-g { background: #10b981; }
         .screen-nav .p-url { font-size: 0.75rem; color: #94a3b8; background: #e2e8f0; padding: 4px 12px; border-radius: 8px; font-family: monospace; }
-        .screen-body { padding: 25px; text-align: center; }
+        .screen-body { padding: 25px; text-align: center; transition: background 0.35s ease, color 0.35s ease; }
         .screen-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; color: var(--primary); display: flex; align-items: center; justify-content: center; gap: 8px; }
         .screen-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; line-height: 1.2; }
         .screen-desc { color: #64748b; margin-bottom: 20px; font-size: 0.95rem; }
+        .screen-meta { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+        .screen-chip { padding: 6px 12px; border-radius: 999px; background: rgba(15,23,42,0.07); font-size: 0.75rem; font-weight: 700; }
         .screen-cta { display: inline-block; padding: 10px 24px; background: var(--primary); color: #fff; border-radius: 100px; font-weight: 700; font-size: 0.9rem; }
         .screen-badges { display: flex; gap: 8px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
         .screen-badge { padding: 6px 12px; background: rgba(0,0,0,0.05); border-radius: 8px; font-size: 0.75rem; font-weight: 700; color: #475569; }
+        .screen-sections { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0 10px; }
+        .screen-section {
+            padding: 12px 10px;
+            border-radius: 14px;
+            background: rgba(15,23,42,0.06);
+            text-align: left;
+        }
+        .screen-section strong { display: block; font-size: 0.8rem; margin-bottom: 3px; }
+        .screen-section span { font-size: 0.72rem; color: #64748b; line-height: 1.4; }
+        @media (max-width: 640px) {
+            .screen-sections { grid-template-columns: 1fr; }
+            .screen-nav .p-url { max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        }
 
         /* PDF MODAL */
         .pdf-modal { display: none; position: fixed; inset: 0; background: rgba(2, 3, 6, 0.95); z-index: 1000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(10px); }
@@ -267,17 +366,17 @@
                     <p data-i18n="s2_o2_p">Komplexní prezentační web.</p>
                     <span class="price-tag" data-price="3240">+3 240 Kč</span>
                 </div>
+                <div class="option-card" data-type="portfolio" data-price="5400" data-time="9">
+                    <i class="fa-solid fa-images"></i>
+                    <h3 data-i18n="s2_o3_h">Portfólio</h3>
+                    <p data-i18n="s2_o3_p">Web pro prezentaci vašich prací.</p>
+                    <span class="price-tag" data-price="5400">+5 400 Kč</span>
+                </div>
                 <div class="option-card" data-type="blog" data-price="6480" data-time="10">
                     <i class="fa-solid fa-newspaper"></i>
-                    <h3 data-i18n="s2_o3_h">Web s blogem</h3>
-                    <p data-i18n="s2_o3_p">Pro přidávání článků a novinek.</p>
+                    <h3 data-i18n="s2_o4_h">Web s blogem</h3>
+                    <p data-i18n="s2_o4_p">Pro přidávání článků a novinek.</p>
                     <span class="price-tag" data-price="6480">+6 480 Kč</span>
-                </div>
-                <div class="option-card" data-type="eshop" data-price="17496" data-time="14">
-                    <i class="fa-solid fa-basket-shopping"></i>
-                    <h3 data-i18n="s2_o4_h">E-shop</h3>
-                    <p data-i18n="s2_o4_p">Kompletní online prodej.</p>
-                    <span class="price-tag" data-price="17496">+17 496 Kč</span>
                 </div>
             </div>
         </div>
@@ -416,6 +515,22 @@
                         <span data-price="1458">+1 458 Kč</span>
                     </div>
                 </label>
+                <label class="checkbox-card" data-price="1296" data-feature="contactform">
+                    <input type="checkbox" name="extras">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <div class="checkbox-card-content">
+                        <h4 data-i18n="s5_o7_h">Kontaktní formulář</h4>
+                        <span data-price="1296">+1 296 Kč</span>
+                    </div>
+                </label>
+                <label class="checkbox-card" data-price="1620" data-feature="gallery">
+                    <input type="checkbox" name="extras">
+                    <i class="fa-solid fa-images"></i>
+                    <div class="checkbox-card-content">
+                        <h4 data-i18n="s5_o8_h">Fotogalerie</h4>
+                        <span data-price="1620">+1 620 Kč</span>
+                    </div>
+                </label>
             </div>
         </div>
 
@@ -426,22 +541,52 @@
                 <p class="step-desc" data-i18n="s6_desc">Chcete něco navíc?</p>
             </div>
             <div class="checkbox-grid">
-                <label class="checkbox-card" data-price="1944" data-feature="logo">
-                    <input type="checkbox" name="advanced">
-                    <i class="fa-solid fa-pen-ruler"></i>
-                    <div class="checkbox-card-content">
-                        <h4 data-i18n="s6_o1_h">Nové logo</h4>
-                        <span data-price="1944">+1 944 Kč</span>
+                <div class="checkbox-card-wrapper" data-feature-group="logo">
+                    <label class="checkbox-card" data-price="1944" data-feature="logo">
+                        <input type="checkbox" name="advanced">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                        <div class="checkbox-card-content">
+                            <h4 data-i18n="s6_o1_h">Nové logo</h4>
+                            <span data-price="1944">+1 944 Kč</span>
+                        </div>
+                    </label>
+                    <div class="sub-options" id="logoSubOptions">
+                        <button class="sub-option-btn active" data-sub-option="new" data-price="0">
+                            <i class="fa-solid fa-magic"></i>
+                            <span data-i18n="s6_o1_sub1">Přeji si navrhnout logo</span>
+                        </button>
+                        <button class="sub-option-btn" data-sub-option="have" data-price="0">
+                            <i class="fa-solid fa-check"></i>
+                            <span data-i18n="s6_o1_sub2">Logo mám</span>
+                        </button>
+                        <button class="sub-option-btn" data-sub-option="edit" data-price="648">
+                            <i class="fa-solid fa-pencil"></i>
+                            <span data-i18n="s6_o1_sub3">Chci upravit logo</span>
+                            <span class="sub-price">+648 Kč</span>
+                        </button>
                     </div>
-                </label>
-                <label class="checkbox-card" data-price="3240" data-feature="cms">
-                    <input type="checkbox" name="advanced">
-                    <i class="fa-solid fa-sliders"></i>
-                    <div class="checkbox-card-content">
-                        <h4 data-i18n="s6_o2_h">CMS pro editaci</h4>
-                        <span data-price="3240">+3 240 Kč</span>
+                </div>
+                <div class="checkbox-card-wrapper" data-feature-group="cms">
+                    <label class="checkbox-card" data-price="3240" data-feature="cms">
+                        <input type="checkbox" name="advanced">
+                        <i class="fa-solid fa-sliders"></i>
+                        <div class="checkbox-card-content">
+                            <h4 data-i18n="s6_o2_h">CMS pro editaci</h4>
+                            <span data-price="3240">+3 240 Kč</span>
+                        </div>
+                    </label>
+                    <div class="sub-options" id="cmsSubOptions">
+                        <button class="sub-option-btn active" data-sub-option="custom" data-price="0">
+                            <i class="fa-solid fa-code"></i>
+                            <span data-i18n="s6_o2_sub1">Chci vlastní systém</span>
+                        </button>
+                        <button class="sub-option-btn" data-sub-option="maintain" data-price="1080">
+                            <i class="fa-solid fa-hands-helping"></i>
+                            <span data-i18n="s6_o2_sub2">Přeji si údržbu od tvůrce</span>
+                            <span class="sub-price">+1 080 Kč</span>
+                        </button>
                     </div>
-                </label>
+                </div>
                 <label class="checkbox-card" data-price="2592" data-feature="photos">
                     <input type="checkbox" name="advanced">
                     <i class="fa-solid fa-image"></i>
@@ -456,6 +601,22 @@
                     <div class="checkbox-card-content">
                         <h4 data-i18n="s6_o4_h">Copywriting</h4>
                         <span data-price="1620">+1 620 Kč</span>
+                    </div>
+                </label>
+                <label class="checkbox-card" data-price="2160" data-feature="maintenance">
+                    <input type="checkbox" name="advanced">
+                    <i class="fa-solid fa-wrench"></i>
+                    <div class="checkbox-card-content">
+                        <h4 data-i18n="s6_o5_h">Údržba webu (1 rok)</h4>
+                        <span data-price="2160">+2 160 Kč</span>
+                    </div>
+                </label>
+                <label class="checkbox-card" data-price="1296" data-feature="speed">
+                    <input type="checkbox" name="advanced">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div class="checkbox-card-content">
+                        <h4 data-i18n="s6_o6_h">Optimalizace rychlosti</h4>
+                        <span data-price="1296">+1 296 Kč</span>
                     </div>
                 </label>
             </div>
@@ -563,6 +724,8 @@
                             <div class="screen-logo" id="pLogo"><i class="fa-solid fa-cubes"></i> VašeSpolečnost</div>
                             <div class="screen-title" id="pTitle" data-i18n="p_title">Váš moderní web</div>
                             <div class="screen-desc" id="pDesc" data-i18n="p_desc">Profesionální řešení pro váš byznys.</div>
+                            <div class="screen-meta" id="pMeta"></div>
+                            <div class="screen-sections" id="pSections"></div>
                             <div class="screen-cta" id="pCta" style="background: var(--primary);" data-i18n="p_cta">Zjistit více</div>
                             <div class="screen-badges" id="pBadges">
                                 <span class="screen-badge" data-i18n="p_badge_fast">Rychlý</span>
@@ -571,7 +734,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="macbook-base"></div>
+                <div class="macbook-base">
+                    <div class="macbook-keyboard" id="macbookKeyboard"></div>
+                </div>
             </div>
         </div>
     </aside>
@@ -718,9 +883,16 @@
             s5_title: "Funkce a doplňky", s5_desc: "Vyberte si speciality pro váš web.",
             s5_o1_h: "SEO optimalizace", s5_o2_h: "Analytika GA4", s5_o3_h: "Sociální sítě",
             s5_o4_h: "Chatbot", s5_o5_h: "Newsletter", s5_o6_h: "Vícejazyčnost",
+            s5_o7_h: "Kontaktní formulář", s5_o8_h: "Fotogalerie",
             s6_title: "Pokročilé služby", s6_desc: "Chcete něco navíc?",
             s6_o1_h: "Nové logo", s6_o2_h: "CMS pro editaci",
             s6_o3_h: "Knihovna fotek", s6_o4_h: "Copywriting",
+            s6_o5_h: "Údržba webu (1 rok)", s6_o6_h: "Optimalizace rychlosti",
+            s6_o1_sub1: "Přeji si navrhnout logo",
+            s6_o1_sub2: "Logo mám",
+            s6_o1_sub3: "Chci upravit logo",
+            s6_o2_sub1: "Chci vlastní systém",
+            s6_o2_sub2: "Přeji si údržbu od tvůrce",
             s7_title: "Hosting a doména", s7_desc: "Chcete, abych se postaral o nastavení?",
             s7_o1_h: "Záleží na mně", s7_o1_p: "Vyřeším hosting sám.",
             s7_o2_h: "Nastavení", s7_o2_p: "Nastavím váš hosting.",
@@ -740,7 +912,7 @@
             pdf_contact_title: "Kontakt", pdf_footer: "Tato nabídka je platná 14 dnů od vydání. Veškeré ceny jsou uvedeny bez DPH.",
             pdf_close: "Zavřít", pdf_download: "Stáhnout PDF",
             toast_saved: "Uloženo!", toast_copied: "Zkopírováno do schránky!",
-            type_onepage: "One-page vizitka", type_multipage: "Vícestránkový web", type_blog: "Web s blogem", type_eshop: "E-shop"
+            type_onepage: "One-page vizitka", type_multipage: "Vícestránkový web", type_portfolio: "Portfólio", type_blog: "Web s blogem"
         },
         en: {
             s1_title: "Basic information", s1_desc: "Let's start with you and your project.",
@@ -766,9 +938,16 @@
             s5_title: "Features & extras", s5_desc: "Choose specialties for your site.",
             s5_o1_h: "SEO optimization", s5_o2_h: "GA4 Analytics", s5_o3_h: "Social media",
             s5_o4_h: "Chatbot", s5_o5_h: "Newsletter", s5_o6_h: "Multilingual",
+            s5_o7_h: "Contact form", s5_o8_h: "Photo gallery",
             s6_title: "Advanced services", s6_desc: "Want something extra?",
             s6_o1_h: "New logo", s6_o2_h: "CMS for editing",
             s6_o3_h: "Photo library", s6_o4_h: "Copywriting",
+            s6_o5_h: "Website maintenance (1 year)", s6_o6_h: "Speed optimization",
+            s6_o1_sub1: "I want a new logo",
+            s6_o1_sub2: "I have a logo",
+            s6_o1_sub3: "I want to edit my logo",
+            s6_o2_sub1: "I want a custom system",
+            s6_o2_sub2: "I want maintenance from the creator",
             s7_title: "Hosting & domain", s7_desc: "Do you want me to take care of setup?",
             s7_o1_h: "I'll handle it", s7_o1_p: "I'll sort hosting myself.",
             s7_o2_h: "Setup", s7_o2_p: "I'll set up your hosting.",
@@ -788,27 +967,157 @@
             pdf_contact_title: "Contact", pdf_footer: "This quote is valid for 14 days from issue. All prices are without VAT.",
             pdf_close: "Close", pdf_download: "Download PDF",
             toast_saved: "Saved!", toast_copied: "Copied to clipboard!",
-            type_onepage: "One-page site", type_multipage: "Multi-page site", type_blog: "Website with blog", type_eshop: "E-shop"
+            type_onepage: "One-page site", type_multipage: "Multi-page site", type_portfolio: "Portfolio", type_blog: "Website with blog"
         }
     };
 
-    const typeNames = { onepage: 'type_onepage', multipage: 'type_multipage', blog: 'type_blog', eshop: 'type_eshop' };
+    const typeNames = { onepage: 'type_onepage', multipage: 'type_multipage', portfolio: 'type_portfolio', blog: 'type_blog' };
 
     // INIT
     document.addEventListener('DOMContentLoaded', () => {
+        buildSubOptionsForCards();
         initEventListeners();
         updateAll();
         setCurrentDate();
+        generateKeyboard();
     });
+
+    function generateKeyboard() {
+        const keyboard = document.getElementById('macbookKeyboard');
+        if (!keyboard) return;
+        keyboard.innerHTML = '';
+        for (let i=0; i<48; i++) {
+            const key = document.createElement('div');
+            key.className = 'macbook-key';
+            keyboard.appendChild(key);
+        }
+    }
+
+    const subOptionDefinitions = {
+        seo: {
+            default: 'technical',
+            options: [
+                { id: 'technical', icon: 'fa-solid fa-screwdriver-wrench', price: 0, labels: { cz: 'Technické SEO základy', en: 'Technical SEO basics' } },
+                { id: 'local', icon: 'fa-solid fa-location-dot', price: 540, labels: { cz: 'Lokální SEO pro mapy', en: 'Local SEO for maps' } },
+                { id: 'content', icon: 'fa-solid fa-pen', price: 780, labels: { cz: 'SEO obsahové podklady', en: 'SEO content setup' } }
+            ]
+        },
+        analytics: {
+            default: 'basic',
+            options: [
+                { id: 'basic', icon: 'fa-solid fa-chart-simple', price: 0, labels: { cz: 'Základní měření návštěv', en: 'Basic traffic tracking' } },
+                { id: 'events', icon: 'fa-solid fa-bullseye', price: 540, labels: { cz: 'Měření kliků a formulářů', en: 'Click and form tracking' } },
+                { id: 'reporting', icon: 'fa-solid fa-file-lines', price: 780, labels: { cz: 'Přehledový reporting', en: 'Reporting dashboard' } }
+            ]
+        },
+        social: {
+            default: 'links',
+            options: [
+                { id: 'links', icon: 'fa-solid fa-link', price: 0, labels: { cz: 'Propojení profilů', en: 'Profile links' } },
+                { id: 'feed', icon: 'fa-solid fa-images', price: 540, labels: { cz: 'Vložení feedu příspěvků', en: 'Embedded social feed' } },
+                { id: 'branding', icon: 'fa-solid fa-wand-magic-sparkles', price: 864, labels: { cz: 'Grafické sladění sítí', en: 'Social branding setup' } }
+            ]
+        },
+        chatbot: {
+            default: 'contact',
+            options: [
+                { id: 'contact', icon: 'fa-solid fa-comment', price: 0, labels: { cz: 'Jednoduchý kontaktní chat', en: 'Simple contact chat' } },
+                { id: 'faq', icon: 'fa-solid fa-circle-question', price: 648, labels: { cz: 'FAQ odpovědi návštěvníkům', en: 'FAQ assistant' } },
+                { id: 'ai', icon: 'fa-solid fa-robot', price: 1080, labels: { cz: 'Chytřejší AI asistent', en: 'AI assistant' } }
+            ]
+        },
+        newsletter: {
+            default: 'signup',
+            options: [
+                { id: 'signup', icon: 'fa-solid fa-envelope-open', price: 0, labels: { cz: 'Pouhý sběr e-mailů', en: 'Basic signup form' } },
+                { id: 'automation', icon: 'fa-solid fa-gears', price: 648, labels: { cz: 'Automatická uvítací sekvence', en: 'Welcome automation' } },
+                { id: 'campaigns', icon: 'fa-solid fa-paper-plane', price: 972, labels: { cz: 'Nastavení kampaní a šablon', en: 'Campaign and template setup' } }
+            ]
+        },
+        multilingual: {
+            default: 'one',
+            options: [
+                { id: 'one', icon: 'fa-solid fa-language', price: 0, labels: { cz: '1 jazyk navíc', en: '1 extra language' } },
+                { id: 'two', icon: 'fa-solid fa-earth-europe', price: 1080, labels: { cz: '2 jazyky navíc', en: '2 extra languages' } },
+                { id: 'structure', icon: 'fa-solid fa-sitemap', price: 540, labels: { cz: 'Jen jazyková struktura webu', en: 'Language-ready structure only' } }
+            ]
+        },
+        contactform: {
+            default: 'simple',
+            options: [
+                { id: 'simple', icon: 'fa-solid fa-square-check', price: 0, labels: { cz: 'Jednoduchý formulář', en: 'Simple form' } },
+                { id: 'inquiry', icon: 'fa-solid fa-list-check', price: 324, labels: { cz: 'Poptávkový formulář', en: 'Inquiry form' } },
+                { id: 'multistep', icon: 'fa-solid fa-shoe-prints', price: 648, labels: { cz: 'Vícekrokový formulář', en: 'Multi-step form' } }
+            ]
+        },
+        gallery: {
+            default: 'basic',
+            options: [
+                { id: 'basic', icon: 'fa-solid fa-image', price: 0, labels: { cz: 'Jednoduchá galerie', en: 'Basic gallery' } },
+                { id: 'lightbox', icon: 'fa-solid fa-expand', price: 324, labels: { cz: 'Galerie s náhledy a zvětšením', en: 'Lightbox gallery' } },
+                { id: 'filter', icon: 'fa-solid fa-filter', price: 540, labels: { cz: 'Filtrovatelná galerie', en: 'Filterable gallery' } }
+            ]
+        },
+        logo: {
+            default: 'new',
+            options: [
+                { id: 'new', icon: 'fa-solid fa-wand-magic-sparkles', price: 0, labels: { cz: 'Přeji si navrhnout logo', en: 'I want a new logo' } },
+                { id: 'have', icon: 'fa-solid fa-check', price: 0, labels: { cz: 'Logo mám', en: 'I already have a logo' } },
+                { id: 'edit', icon: 'fa-solid fa-pencil', price: 648, labels: { cz: 'Chci upravit logo', en: 'I want to improve my logo' } }
+            ]
+        },
+        cms: {
+            default: 'custom',
+            options: [
+                { id: 'custom', icon: 'fa-solid fa-code', price: 0, labels: { cz: 'Chci vlastní administrativní systém', en: 'I want a custom admin system' } },
+                { id: 'creator', icon: 'fa-solid fa-user-gear', price: 1080, labels: { cz: 'Budoucí úpravy chci nechat na tvůrci', en: 'I want future edits handled by creator' } },
+                { id: 'simple', icon: 'fa-solid fa-sliders', price: 540, labels: { cz: 'Stačí jednoduchá editace obsahu', en: 'Simple content editing is enough' } }
+            ]
+        },
+        photos: {
+            default: 'stock',
+            options: [
+                { id: 'stock', icon: 'fa-solid fa-camera', price: 0, labels: { cz: 'Základní fotobanka', en: 'Basic stock library' } },
+                { id: 'curated', icon: 'fa-solid fa-photo-film', price: 540, labels: { cz: 'Ruční výběr fotek na míru', en: 'Curated image selection' } },
+                { id: 'premium', icon: 'fa-solid fa-gem', price: 1080, labels: { cz: 'Prémiové licencované fotky', en: 'Premium licensed images' } }
+            ]
+        },
+        copywriting: {
+            default: 'editing',
+            options: [
+                { id: 'editing', icon: 'fa-solid fa-spell-check', price: 0, labels: { cz: 'Jazyková úprava dodaných textů', en: 'Editing provided texts' } },
+                { id: 'rewrite', icon: 'fa-solid fa-feather', price: 648, labels: { cz: 'Přepsání textů do prodejnější formy', en: 'Rewrite for better conversion' } },
+                { id: 'full', icon: 'fa-solid fa-file-pen', price: 1296, labels: { cz: 'Kompletní textace webu', en: 'Full website copywriting' } }
+            ]
+        },
+        maintenance: {
+            default: 'quarterly',
+            options: [
+                { id: 'quarterly', icon: 'fa-solid fa-calendar-days', price: 0, labels: { cz: 'Občasná technická kontrola', en: 'Occasional technical review' } },
+                { id: 'monthly', icon: 'fa-solid fa-arrows-rotate', price: 972, labels: { cz: 'Pravidelná měsíční péče', en: 'Monthly maintenance' } },
+                { id: 'priority', icon: 'fa-solid fa-bolt', price: 1620, labels: { cz: 'Prioritní podpora a zásahy', en: 'Priority support' } }
+            ]
+        },
+        speed: {
+            default: 'basic',
+            options: [
+                { id: 'basic', icon: 'fa-solid fa-gauge-high', price: 0, labels: { cz: 'Základní optimalizace', en: 'Basic optimization' } },
+                { id: 'advanced', icon: 'fa-solid fa-rocket', price: 540, labels: { cz: 'Pokročilá optimalizace rychlosti', en: 'Advanced speed optimization' } },
+                { id: 'core', icon: 'fa-solid fa-stopwatch', price: 972, labels: { cz: 'Ladění Core Web Vitals', en: 'Core Web Vitals tuning' } }
+            ]
+        }
+    };
+
+    const subOptionsState = {};
 
     function initEventListeners() {
         // Nav buttons
         els.prevBtn.addEventListener('click', () => goToStep(state.currentStep - 1));
-        els.nextBtn.addEventListener('click', () => nextStep());
+        els.nextBtn.addEventListener('click', handleNextClick);
 
         // Keyboard
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextStep();
+            if (e.key === 'ArrowRight') handleNextClick();
             if (e.key === 'ArrowLeft') goToStep(state.currentStep - 1);
         });
 
@@ -819,13 +1128,24 @@
         document.querySelectorAll('.step[data-step="7"] .option-card').forEach(card => card.addEventListener('click', () => selectOption(card, 'hosting')));
 
         // Checkboxes (features, advanced)
-        document.querySelectorAll('.checkbox-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const cb = card.querySelector('input');
-                cb.checked = !cb.checked;
-                toggleCheckbox(card);
-            });
-            card.querySelector('input').addEventListener('change', () => toggleCheckbox(card));
+        document.querySelectorAll('.checkbox-card input').forEach(input => {
+            input.addEventListener('change', () => toggleCheckbox(input.closest('.checkbox-card')));
+        });
+
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.sub-option-btn');
+            if (!btn) return;
+            e.preventDefault();
+            const subOptionsDiv = btn.closest('.sub-options');
+            const group = subOptionsDiv.closest('.checkbox-card-wrapper').dataset.featureGroup;
+            subOptionsDiv.querySelectorAll('.sub-option-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            subOptionsState[group] = {
+                selected: btn.dataset.subOption,
+                price: Number(btn.dataset.price) || 0
+            };
+            calculateTotals();
+            updatePreview();
         });
 
         // Color pickers
@@ -850,6 +1170,143 @@
         document.addEventListener('mousemove', handleMouseMove);
     }
 
+    function buildSubOptionsForCards() {
+        Object.entries(subOptionDefinitions).forEach(([feature, config]) => {
+            const defaultOption = config.options.find(option => option.id === config.default) || config.options[0];
+            subOptionsState[feature] = {
+                selected: defaultOption.id,
+                price: defaultOption.price
+            };
+        });
+
+        document.querySelectorAll('.checkbox-card[data-feature]').forEach(card => {
+            const feature = card.dataset.feature;
+            const config = subOptionDefinitions[feature];
+            if (!config) return;
+
+            let wrapper = card.closest('.checkbox-card-wrapper');
+            if (!wrapper) {
+                wrapper = document.createElement('div');
+                wrapper.className = 'checkbox-card-wrapper';
+                wrapper.dataset.featureGroup = feature;
+                card.parentNode.insertBefore(wrapper, card);
+                wrapper.appendChild(card);
+            } else {
+                wrapper.dataset.featureGroup = feature;
+            }
+
+            let subOptions = wrapper.querySelector('.sub-options');
+            if (!subOptions) {
+                subOptions = document.createElement('div');
+                subOptions.className = 'sub-options';
+                wrapper.appendChild(subOptions);
+            }
+
+            renderSubOptions(feature, subOptions);
+            syncWrapperOpenState(card);
+        });
+    }
+
+    function renderSubOptions(feature, container) {
+        const config = subOptionDefinitions[feature];
+        if (!config) return;
+
+        container.innerHTML = config.options.map(option => {
+            const isActive = subOptionsState[feature]?.selected === option.id;
+            const label = option.labels[state.lang] || option.labels.cz;
+            const priceHtml = option.price > 0 ? `<span class="sub-price">+${formatPrice(option.price)}</span>` : '';
+            return `
+                <button type="button" class="sub-option-btn${isActive ? ' active' : ''}" data-sub-option="${option.id}" data-price="${option.price}">
+                    <i class="${option.icon}"></i>
+                    <span>${label}</span>
+                    ${priceHtml}
+                </button>
+            `;
+        }).join('');
+    }
+
+    function rerenderSubOptions() {
+        document.querySelectorAll('.checkbox-card-wrapper[data-feature-group]').forEach(wrapper => {
+            const feature = wrapper.dataset.featureGroup;
+            const subOptions = wrapper.querySelector('.sub-options');
+            if (feature && subOptions) renderSubOptions(feature, subOptions);
+        });
+    }
+
+    function syncWrapperOpenState(card) {
+        const wrapper = card.closest('.checkbox-card-wrapper');
+        if (!wrapper) return;
+        const isChecked = card.querySelector('input').checked;
+        wrapper.classList.toggle('open', isChecked);
+    }
+
+    function handleNextClick() {
+        if (state.currentStep === state.totalSteps) {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            return;
+        }
+        nextStep();
+    }
+
+    function getSelectedSubOption(feature) {
+        const config = subOptionDefinitions[feature];
+        const selectedId = subOptionsState[feature]?.selected;
+        if (!config) return null;
+        return config.options.find(option => option.id === selectedId) || config.options[0];
+    }
+
+    function getCardTitle(card) {
+        return card.querySelector('h4, h3')?.textContent?.trim() || card.dataset.feature || '';
+    }
+
+    function isDarkColor(hex) {
+        const value = (hex || '#ffffff').replace('#', '');
+        const normalized = value.length === 3 ? value.split('').map(char => char + char).join('') : value;
+        const r = parseInt(normalized.slice(0, 2), 16);
+        const g = parseInt(normalized.slice(2, 4), 16);
+        const b = parseInt(normalized.slice(4, 6), 16);
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        return luminance < 0.55;
+    }
+
+    function getSelectedLineItems() {
+        const items = [];
+
+        const typeCard = document.querySelector('.step[data-step="2"] .option-card.selected');
+        const pagesCard = document.querySelector('.step[data-step="4"] .option-card.selected');
+        const hostingCard = document.querySelector('.step[data-step="7"] .option-card.selected');
+
+        if (typeCard && Number(typeCard.dataset.price) > 0) {
+            items.push({ name: getCardTitle(typeCard), price: Number(typeCard.dataset.price) });
+        }
+        if (pagesCard && Number(pagesCard.dataset.price) > 0) {
+            items.push({ name: getCardTitle(pagesCard), price: Number(pagesCard.dataset.price) });
+        }
+        if (document.getElementById('customColorCard').classList.contains('selected')) {
+            items.push({ name: translations[state.lang].s3_o4_h, price: 972 });
+        }
+
+        document.querySelectorAll('.checkbox-card.checked').forEach(card => {
+            const feature = card.dataset.feature;
+            items.push({ name: getCardTitle(card), price: Number(card.dataset.price) || 0 });
+
+            const config = subOptionDefinitions[feature];
+            const selectedOption = getSelectedSubOption(feature);
+            if (config && selectedOption && (selectedOption.price > 0 || selectedOption.id !== config.default)) {
+                items.push({
+                    name: `${getCardTitle(card)}: ${selectedOption.labels[state.lang] || selectedOption.labels.cz}`,
+                    price: selectedOption.price
+                });
+            }
+        });
+
+        if (hostingCard && Number(hostingCard.dataset.price) > 0) {
+            items.push({ name: getCardTitle(hostingCard), price: Number(hostingCard.dataset.price) });
+        }
+
+        return items;
+    }
+
     function nextStep() {
         if (state.currentStep === 1) {
             const name = document.getElementById('nameInput').value.trim();
@@ -872,18 +1329,10 @@
         // Update nav
         els.prevBtn.classList.toggle('btn-hidden', state.currentStep === 1);
         const lastStep = state.currentStep === state.totalSteps;
-        document.querySelector('#nextBtn span').textContent = lastStep 
-            ? translations[state.lang].btn_done 
-            : translations[state.lang].btn_next;
+        els.nextBtn.style.display = lastStep ? 'none' : 'inline-flex';
         els.nextBtn.innerHTML = lastStep 
             ? `<span data-i18n="btn_done">${translations[state.lang].btn_done}</span> <i class="fa-solid fa-check"></i>`
             : `<span data-i18n="btn_next">${translations[state.lang].btn_next}</span> <i class="fa-solid fa-arrow-right"></i>`;
-        
-        if (lastStep) {
-            els.nextBtn.onclick = () => confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-        } else {
-            els.nextBtn.onclick = nextStep;
-        }
 
         updateProgress();
         if (state.currentStep === 8) updateFinalStep();
@@ -926,22 +1375,24 @@
     function toggleCheckbox(card) {
         const isChecked = card.querySelector('input').checked;
         card.classList.toggle('checked', isChecked);
+        syncWrapperOpenState(card);
         
         const feature = card.dataset.feature;
         const container = card.closest('.step').dataset.step;
         
         if (container === '5') {
             state.selectedFeatures = isChecked 
-                ? [...state.selectedFeatures, feature]
+                ? [...new Set([...state.selectedFeatures, feature])]
                 : state.selectedFeatures.filter(f => f !== feature);
         }
         if (container === '6') {
             state.selectedAdvanced = isChecked 
-                ? [...state.selectedAdvanced, feature]
+                ? [...new Set([...state.selectedAdvanced, feature])]
                 : state.selectedAdvanced.filter(f => f !== feature);
         }
 
         calculateTotals();
+        updatePreview();
     }
 
     function updateCustomColors() {
@@ -956,6 +1407,7 @@
     function calculateTotals() {
         let price = state.basePrice;
         let time = 5;
+        let timeExtra = 0;
 
         // Type
         const typeCard = document.querySelector('.step[data-step="2"] .option-card.selected');
@@ -969,16 +1421,26 @@
 
         // Pages
         const pagesCard = document.querySelector('.step[data-step="4"] .option-card.selected');
-        if (pagesCard) price += Number(pagesCard.dataset.price) || 0;
+        if (pagesCard) {
+            price += Number(pagesCard.dataset.price) || 0;
+            const pageTimeMap = { '1-3': 0, '4-6': 2, '7-10': 4, '10plus': 6 };
+            timeExtra += pageTimeMap[pagesCard.dataset.pages] || 0;
+        }
 
         // Features
         document.querySelectorAll('.step[data-step="5"] .checkbox-card.checked').forEach(card => {
             price += Number(card.dataset.price) || 0;
+            const featureOption = getSelectedSubOption(card.dataset.feature);
+            if (featureOption) price += featureOption.price || 0;
+            timeExtra += 0.5;
         });
 
         // Advanced
         document.querySelectorAll('.step[data-step="6"] .checkbox-card.checked').forEach(card => {
             price += Number(card.dataset.price) || 0;
+            const featureOption = getSelectedSubOption(card.dataset.feature);
+            if (featureOption) price += featureOption.price || 0;
+            timeExtra += 1;
         });
 
         // Hosting
@@ -986,7 +1448,7 @@
         if (hostingCard) price += Number(hostingCard.dataset.price) || 0;
 
         state.totalPrice = price;
-        state.time = time;
+        state.time = Math.round(time + timeExtra);
         updatePriceDisplay();
     }
 
@@ -1009,33 +1471,62 @@
     }
 
     function updatePreview() {
-        // Colors
         document.documentElement.style.setProperty('--primary', state.styleData.color);
         els.screenBody.style.background = state.styleData.bg;
         els.screenBody.style.color = state.styleData.text;
-        
+
         const cta = document.getElementById('pCta');
         if (cta) cta.style.background = state.styleData.color;
+        document.getElementById('pLogo').style.color = state.styleData.color;
 
-        // Text
         const name = document.getElementById('nameInput')?.value.trim() || (state.lang === 'cz' ? 'VašeSpolečnost' : 'YourCompany');
         const proj = document.getElementById('projectInput')?.value.trim();
-        
+        const typeText = translations[state.lang][typeNames[state.websiteType]] || state.websiteType;
+        const pagesText = document.querySelector('.step[data-step="4"] .option-card.selected h3')?.textContent?.trim() || '';
+        const hostingText = document.querySelector('.step[data-step="7"] .option-card.selected h3')?.textContent?.trim() || '';
+        const darkPreview = isDarkColor(state.styleData.bg);
+
         document.getElementById('pLogo').innerHTML = `<i class="fa-solid fa-cubes"></i> ${name}`;
-        document.getElementById('pTitle').textContent = proj || translations[state.lang].p_title;
-        document.getElementById('pDesc').textContent = proj ? (state.lang === 'cz' ? 'Váš projekt připravený k realizaci.' : 'Your project ready for development.') : translations[state.lang].p_desc;
-        
-        const url = name.toLowerCase().replace(/\s+/g, '');
-        document.getElementById('pUrl').textContent = `www.${url}.cz`;
-        
-        // Badges
+        document.getElementById('pTitle').textContent = proj || typeText;
+        document.getElementById('pDesc').textContent = proj
+            ? (state.lang === 'cz' ? 'Koncept webu přizpůsobený vašemu zadání a vybraným funkcím.' : 'A web concept tailored to your brief and selected features.')
+            : translations[state.lang].p_desc;
+
+        const safeDomain = name
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '')
+            .slice(0, 18) || 'vasprojekt';
+        document.getElementById('pUrl').textContent = `www.${safeDomain}.cz`;
+
+        const meta = document.getElementById('pMeta');
+        meta.innerHTML = [
+            `<span class="screen-chip">${typeText}</span>`,
+            pagesText ? `<span class="screen-chip">${pagesText}</span>` : '',
+            `<span class="screen-chip">~${state.time} ${translations[state.lang].p_days}</span>`
+        ].join('');
+
+        const sections = document.getElementById('pSections');
+        sections.innerHTML = [
+            `<div class="screen-section"><strong>${state.lang === 'cz' ? 'Styl' : 'Style'}</strong><span>${document.querySelector('.step[data-step="3"] .option-card.selected h3')?.textContent?.trim() || ''}</span></div>`,
+            `<div class="screen-section"><strong>${state.lang === 'cz' ? 'Obsah' : 'Content'}</strong><span>${pagesText || (state.lang === 'cz' ? 'Základní struktura webu' : 'Basic website structure')}</span></div>`,
+            `<div class="screen-section"><strong>${state.lang === 'cz' ? 'Správa' : 'Setup'}</strong><span>${hostingText || (state.lang === 'cz' ? 'Bez hostingu' : 'No hosting')}</span></div>`
+        ].join('');
+
+        const descEl = document.getElementById('pDesc');
+        descEl.style.color = darkPreview ? 'rgba(241,245,249,0.78)' : '#64748b';
+        document.querySelectorAll('.screen-section span, .screen-badge, .screen-chip').forEach(el => {
+            el.style.color = darkPreview ? 'rgba(241,245,249,0.82)' : '';
+        });
+
         const badges = document.getElementById('pBadges');
         badges.innerHTML = `<span class="screen-badge">${translations[state.lang].p_badge_fast}</span><span class="screen-badge">${translations[state.lang].p_badge_responsive}</span>`;
-        
-        state.selectedFeatures.forEach(f => {
+
+        [...document.querySelectorAll('.checkbox-card.checked')].slice(0, 4).forEach(card => {
             const badge = document.createElement('span');
             badge.className = 'screen-badge';
-            badge.textContent = f.toUpperCase();
+            badge.textContent = getCardTitle(card);
             badges.appendChild(badge);
         });
     }
@@ -1057,29 +1548,9 @@
 
         const items = document.getElementById('pdfItems');
         items.innerHTML = `<tr><td><strong>${translations[state.lang].pdf_base}</strong></td><td class="price">${formatPrice(state.basePrice)}</td></tr>`;
-
-        // Add type
-        const typeCard = document.querySelector('.step[data-step="2"] .option-card.selected');
-        if (typeCard && Number(typeCard.dataset.price) > 0) {
-            items.innerHTML += `<tr><td>${typeCard.querySelector('h3').textContent}</td><td class="price">+${formatPrice(Number(typeCard.dataset.price))}</td></tr>`;
-        }
-        
-        // Add extras
-        document.querySelectorAll('.checkbox-card.checked').forEach(card => {
-            const h4 = card.querySelector('h4');
-            items.innerHTML += `<tr><td>${h4.textContent}</td><td class="price">+${formatPrice(Number(card.dataset.price))}</td></tr>`;
+        getSelectedLineItems().forEach(item => {
+            items.innerHTML += `<tr><td>${item.name}</td><td class="price">+${formatPrice(item.price)}</td></tr>`;
         });
-        
-        // Custom colors
-        if (document.getElementById('customColorCard').classList.contains('selected')) {
-            items.innerHTML += `<tr><td>${translations[state.lang].s3_o4_h}</td><td class="price">+${formatPrice(972)}</td></tr>`;
-        }
-        
-        // Hosting
-        const hostingCard = document.querySelector('.step[data-step="7"] .option-card.selected');
-        if (hostingCard && Number(hostingCard.dataset.price) > 0) {
-            items.innerHTML += `<tr><td>${hostingCard.querySelector('h3').textContent}</td><td class="price">+${formatPrice(Number(hostingCard.dataset.price))}</td></tr>`;
-        }
     }
 
     function setCurrentDate() {
@@ -1113,25 +1584,20 @@
 
     function handleFormSubmit(e) {
         e.preventDefault();
-        
-        const data = {
-            name: document.getElementById('nameInput').value,
-            email: document.getElementById('emailInput').value,
-            phone: document.getElementById('phoneInput').value,
-            project: document.getElementById('projectInput').value,
-            type: state.websiteType,
-            price: `${state.totalPrice} Kč`,
-            time: `${state.time} days`,
-            features: state.selectedFeatures.join(', '),
-            advanced: state.selectedAdvanced.join(', ')
-        };
-        
-        let summary = '';
-        for (const [k, v] of Object.entries(data)) {
-            summary += `${k}: ${v}\n`;
-        }
-        
-        document.getElementById('formSummary').value = summary;
+
+        const summaryLines = [
+            `Jmeno: ${document.getElementById('nameInput').value}`,
+            `Email: ${document.getElementById('emailInput').value}`,
+            `Telefon: ${document.getElementById('phoneInput').value}`,
+            `Projekt: ${document.getElementById('projectInput').value}`,
+            `Typ: ${translations[state.lang][typeNames[state.websiteType]] || state.websiteType}`,
+            `Cena: ${formatPrice(state.totalPrice)}`,
+            `Doba: ${state.time} ${translations[state.lang].p_days}`,
+            'Vybrane polozky:',
+            ...getSelectedLineItems().map(item => `- ${item.name} (${formatPrice(item.price)})`)
+        ];
+
+        document.getElementById('formSummary').value = summaryLines.join('\n');
         e.target.submit();
         
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
@@ -1140,14 +1606,7 @@
 
     function setCurrency(cur) {
         state.currency = cur;
-        document.querySelectorAll('.switch-group[data-aria-label="Přepínač měny"] .switch-btn, [data-currency]').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.currency === cur || btn.textContent.trim().toUpperCase() === cur.toUpperCase());
-        });
-        // Fix for buttons without data-currency
-        document.querySelectorAll('.nav-controls .switch-group')[0].querySelectorAll('.switch-btn').forEach(btn => {
-             btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === cur);
-        });
-        
+        document.querySelectorAll('[data-currency]').forEach(btn => btn.classList.toggle('active', btn.dataset.currency === cur));
         updateAll();
     }
 
@@ -1168,6 +1627,7 @@
         });
         
         document.documentElement.lang = lang === 'cz' ? 'cs' : 'en';
+        rerenderSubOptions();
         updateAll();
     }
 
@@ -1180,6 +1640,10 @@
     }
 
     function handleMouseMove(e) {
+        if (window.innerWidth <= 1024) {
+            els.macbook.style.transform = 'rotateX(6deg) rotateY(-8deg)';
+            return;
+        }
         const rect = els.macbook.getBoundingClientRect();
         const x = e.clientX - (rect.left + rect.width / 2);
         const y = e.clientY - (rect.top + rect.height / 2);
