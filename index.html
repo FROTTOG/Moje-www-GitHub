@@ -167,13 +167,19 @@
         .browser-header .dot.r { background: #ef4444; } .browser-header .dot.y { background: #f59e0b; } .browser-header .dot.g { background: #10b981; }
         .browser-header .url-bar { margin-left: 15px; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 4px 12px; font-size: 0.75rem; color: #94a3b8; font-family: monospace; display: flex; align-items: center; gap: 8px; }
         
+        /* Reference: na dotykových zařízeních (iPhone / Safari) se žádné iframy nenačítají,
+           jinak by kvůli nedostatku paměti prohlížeč reloadoval stránku. Místo toho se
+           ukazuje statický snímek webu (obrázek) + vždy viditelné tlačítko „Navštívit web".
+           Živý iframe se načítá líně jen na desktopu (hover); na mobilu ho JS skryje. */
         .iframe-wrap { width: 100%; padding-top: 65%; position: relative; overflow: hidden; background: #0f172a; }
-        .iframe-wrap iframe { position: absolute; top: 0; left: 0; width: 400%; height: 400%; transform: scale(0.25); transform-origin: 0 0; border: none; pointer-events: none; }
-        
-        .iframe-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 15px; opacity: 0; transition: opacity 0.3s ease; }
-        .browser-mockup:hover .iframe-overlay { opacity: 1; }
-        .visit-btn { background: linear-gradient(135deg, var(--primary), #ec4899); color: #fff; padding: 12px 24px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4); transform: translateY(10px); transition: transform 0.3s ease; }
-        .browser-mockup:hover .visit-btn { transform: translateY(0); }
+        .ref-preview-fallback { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.98)); color: var(--text-muted); }
+        .ref-preview-fallback i { font-size: 2.4rem; color: var(--primary); }
+        .ref-preview-fallback span { font-family: monospace; font-size: 0.85rem; letter-spacing: 0.02em; }
+        .ref-preview-img { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .iframe-wrap iframe { position: absolute; top: 0; left: 0; width: 400%; height: 400%; transform: scale(0.25); transform-origin: 0 0; border: none; pointer-events: none; z-index: 3; }
+
+        .ref-visit { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 18px; border-radius: 14px; background: linear-gradient(135deg, var(--primary), #ec4899); color: #fff; font-weight: 700; font-size: 0.85rem; text-decoration: none; box-shadow: 0 8px 22px rgba(139, 92, 246, 0.32); transition: transform 0.25s, box-shadow 0.3s; }
+        .ref-visit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(139, 92, 246, 0.45); }
 
         .ref-info { padding: 20px; }
         .ref-info h4 { font-size: 1.25rem; color: #fff; margin-bottom: 6px; font-weight: 800; }
@@ -390,7 +396,7 @@
 
         <section class="container-wrapper reveal">
             <h2 class="section-title" data-i18n="ref_title">Vybrané reference</h2>
-            <p class="section-subtitle" data-i18n="ref_sub">Prohlédněte si živé náhledy webů mých klientů. Zkuste si přes ně přejet myší.</p>
+            <p class="section-subtitle" data-i18n="ref_sub">Prohlédněte si náhledy webů mých klientů. Klikněte na „Navštívit web" a podívejte se na opravdový web.</p>
 
             <div class="ref-grid">
                 <div class="browser-mockup">
@@ -399,12 +405,9 @@
                         <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://vdstavby.cz</div>
                     </div>
                     <div class="iframe-wrap">
+                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>vdstavby.cz</span></div>
+                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvdstavby.cz?w=800" alt="Náhled webu VD Stavby" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://vdstavby.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu VD Stavby"></iframe>
-                        <div class="iframe-overlay">
-                            <a href="https://vdstavby.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
-                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                            </a>
-                        </div>
                     </div>
                     <div class="ref-info">
                         <h4>VD Stavby</h4>
@@ -414,6 +417,7 @@
                             <span class="ref-tag" data-i18n="tag_ref">Reference</span>
                             <span class="ref-tag" data-i18n="tag_form">Formulář</span>
                         </div>
+                        <a class="ref-visit" href="https://vdstavby.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -423,12 +427,9 @@
                         <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://ddhomeinvest.cz</div>
                     </div>
                     <div class="iframe-wrap">
+                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>ddhomeinvest.cz</span></div>
+                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fddhomeinvest.cz?w=800" alt="Náhled webu DD Home Invest" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://ddhomeinvest.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu DD Home Invest"></iframe>
-                        <div class="iframe-overlay">
-                            <a href="https://ddhomeinvest.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
-                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                            </a>
-                        </div>
                     </div>
                     <div class="ref-info">
                         <h4>DD Home Invest</h4>
@@ -438,6 +439,7 @@
                             <span class="ref-tag" data-i18n="tag_cat">Katalog</span>
                             <span class="ref-tag" data-i18n="tag_form">Kontaktní formulář</span>
                         </div>
+                        <a class="ref-visit" href="https://ddhomeinvest.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -447,12 +449,9 @@
                         <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://dvstav.cz</div>
                     </div>
                     <div class="iframe-wrap">
+                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>dvstav.cz</span></div>
+                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fdvstav.cz?w=800" alt="Náhled webu DV Stav" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://dvstav.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu DV Stav"></iframe>
-                        <div class="iframe-overlay">
-                            <a href="https://dvstav.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
-                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                            </a>
-                        </div>
                     </div>
                     <div class="ref-info">
                         <h4>DV Stav</h4>
@@ -462,6 +461,7 @@
                             <span class="ref-tag" data-i18n="tag_ref">Reference</span>
                             <span class="ref-tag" data-i18n="tag_map">Interaktivní mapa</span>
                         </div>
+                        <a class="ref-visit" href="https://dvstav.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -471,12 +471,9 @@
                         <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://myskyvyroba.cz</div>
                     </div>
                     <div class="iframe-wrap">
+                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>myskyvyroba.cz</span></div>
+                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmyskyvyroba.cz?w=800" alt="Náhled webu Myšky výroba" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://myskyvyroba.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu Myšky výroba"></iframe>
-                        <div class="iframe-overlay">
-                            <a href="https://myskyvyroba.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
-                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                            </a>
-                        </div>
                     </div>
                     <div class="ref-info">
                         <h4>Myšky Výroba</h4>
@@ -485,6 +482,7 @@
                             <span class="ref-tag" data-i18n="tag_multi">Vícestránkový web</span>
                             <span class="ref-tag" data-i18n="tag_cat">Katalog produktů</span>
                         </div>
+                        <a class="ref-visit" href="https://myskyvyroba.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -494,12 +492,9 @@
                         <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://stavbycernik.cz</div>
                     </div>
                     <div class="iframe-wrap">
+                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>stavbycernik.cz</span></div>
+                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fstavbycernik.cz?w=800" alt="Náhled webu Stavby Černík" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://stavbycernik.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu Stavby Černík"></iframe>
-                        <div class="iframe-overlay">
-                            <a href="https://stavbycernik.cz" target="_blank" rel="noopener noreferrer" class="visit-btn">
-                                <span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                            </a>
-                        </div>
                     </div>
                     <div class="ref-info">
                         <h4>Stavby Černík</h4>
@@ -508,6 +503,7 @@
                             <span class="ref-tag" style="background: rgba(245, 158, 11, 0.2); color: #fcd34d; border-color: rgba(245, 158, 11, 0.3);" data-i18n="tag_dev"><i class="fa-solid fa-person-digging" aria-hidden="true"></i> Ve vývoji</span>
                             <span class="ref-tag" data-i18n="tag_corp">Firemní web</span>
                         </div>
+                        <a class="ref-visit" href="https://stavbycernik.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -575,7 +571,7 @@
 
     <footer>
         <div>&copy; 2026 JMWEB // Jan Minařík. <span data-i18n="footer_rights">Všechna práva vyhrazena.</span></div>
-        <div>STABLE RELEASE // V4.0 I18N</div>
+        <div>STABLE RELEASE // V4.1 I18N</div>
     </footer>
 
     <button class="scroll-top" id="scrollTopBtn" type="button" aria-label="Zpět nahoru">
@@ -610,7 +606,7 @@
                 proc_2_h: '2. Grafický návrh', proc_2_p: 'Než napíšu první řádek kódu, připravím interaktivní vizuální návrh (UI/UX) přesně podle vaší firemní identity a cílů.',
                 proc_3_h: '3. Samotný vývoj', proc_3_p: 'Grafiku převedu do superrychlého čistého kódu, nastavím administraci a zajistím perfektní zobrazení i na mobilech.',
                 proc_4_h: '4. Testování a spuštění', proc_4_p: 'Web důkladně otestujeme, napojíme na analytiku, zajistíme základní SEO a slavnostně ho vypustíme do světa.',
-                ref_title: 'Vybrané reference', ref_sub: 'Prohlédněte si živé náhledy webů mých klientů. Zkuste si přes ně přejet myší.',
+                ref_title: 'Vybrané reference', ref_sub: 'Prohlédněte si náhledy webů mých klientů. Klikněte na „Navštívit web" a podívejte se na opravdový web.',
                 ref_btn: 'Navštívit web',
                 ref_1_p: 'Moderní prezentace stavební firmy s důrazem na přehlednost služeb, ukázky referencí a kontaktní formulář.',
                 ref_2_p: 'Pokročilý jednostránkový web (One-page) s integrovaným katalogem a propracovaným kontaktním formulářem.',
@@ -651,7 +647,7 @@
                 proc_2_h: '2. UI/UX Design', proc_2_p: 'Before I write the first line of code, I prepare an interactive visual design matching your brand.',
                 proc_3_h: '3. Development', proc_3_p: 'I convert the design into super-fast clean code, set up the CMS, and ensure perfect mobile responsiveness.',
                 proc_4_h: '4. Testing & Launch', proc_4_p: 'We thoroughly test the website, connect analytics, ensure basic SEO, and launch it to the world.',
-                ref_title: 'Selected References', ref_sub: 'Explore live previews of my clients\' websites. Try hovering over them.',
+                ref_title: 'Selected References', ref_sub: 'Browse previews of my clients\' websites. Click "Visit website" to open the live site.',
                 ref_btn: 'Visit website',
                 ref_1_p: 'Modern presentation of a construction company with an emphasis on clarity, portfolio, and contact forms.',
                 ref_2_p: 'Advanced One-page website with an integrated product catalog and sophisticated contact form.',
@@ -708,12 +704,18 @@
             });
         }
 
+        // Živé náhledy referencí: iframe se načítá LÍNĚ a POUZE na desktopu.
+        // Na dotykových zařízeních (iPhone / Safari) by 5 těžkých iframeů vyčerpalo
+        // paměť a prohlížeč by reloadoval stránku. Tam iframe skryjeme a ukážeme
+        // statický náhled (obrázek) + tlačítko „Navštívit web".
+        const isTouchRef = window.matchMedia ? window.matchMedia('(hover: none), (pointer: coarse)').matches : (('ontouchstart' in window) || navigator.maxTouchPoints > 0);
         document.querySelectorAll('iframe.lazy-iframe[data-src]').forEach(iframe => {
+            if (isTouchRef) { iframe.style.display = 'none'; return; }
             const obs = new IntersectionObserver((entries) => {
                 if (!entries[0].isIntersecting) return;
                 iframe.src = iframe.dataset.src;
                 obs.disconnect();
-            }, { rootMargin: '800px 0px', threshold: 0.01 });
+            }, { rootMargin: '300px 0px', threshold: 0.01 });
             obs.observe(iframe);
         });
 
@@ -871,7 +873,7 @@
             el.addEventListener('touchstart', () => { playSound('hover'); }, { passive: true });
         });
 
-        document.querySelectorAll('.btn-configurator, .visit-btn').forEach(btn => {
+        document.querySelectorAll('.btn-configurator, .ref-visit').forEach(btn => {
             btn.addEventListener('click', () => { 
                 playSound('click'); 
                 if (navigator.vibrate) navigator.vibrate(15); 
