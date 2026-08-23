@@ -172,10 +172,12 @@
            ukazuje statický snímek webu (obrázek) + vždy viditelné tlačítko „Navštívit web".
            Živý iframe se načítá líně jen na desktopu (hover); na mobilu ho JS skryje. */
         .iframe-wrap { width: 100%; padding-top: 65%; position: relative; overflow: hidden; background: #0f172a; }
-        .ref-preview-fallback { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.98)); color: var(--text-muted); }
+        .ref-preview-fallback { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.98)); color: var(--text-muted); transition: opacity 0.4s ease; }
         .ref-preview-fallback i { font-size: 2.4rem; color: var(--primary); }
         .ref-preview-fallback span { font-family: monospace; font-size: 0.85rem; letter-spacing: 0.02em; }
-        .ref-preview-img { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .ref-preview-img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transition: opacity 0.4s ease; }
+        .ref-preview-img.loaded { z-index: 3; opacity: 1; }
+        .ref-preview-img.loaded ~ .ref-preview-fallback { opacity: 0; pointer-events: none; }
         .iframe-wrap iframe { position: absolute; top: 0; left: 0; width: 400%; height: 400%; transform: scale(0.25); transform-origin: 0 0; border: none; pointer-events: none; z-index: 3; }
 
         .ref-visit { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 18px; border-radius: 14px; background: linear-gradient(135deg, var(--primary), #ec4899); color: #fff; font-weight: 700; font-size: 0.85rem; text-decoration: none; box-shadow: 0 8px 22px rgba(139, 92, 246, 0.32); transition: transform 0.25s, box-shadow 0.3s; }
@@ -406,7 +408,7 @@
                     </div>
                     <div class="iframe-wrap">
                         <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>vdstavby.cz</span></div>
-                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvdstavby.cz?w=800" alt="Náhled webu VD Stavby" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://vdstavby.cz" alt="Náhled webu VD Stavby" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://vdstavby.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu VD Stavby"></iframe>
                     </div>
                     <div class="ref-info">
@@ -428,7 +430,7 @@
                     </div>
                     <div class="iframe-wrap">
                         <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>ddhomeinvest.cz</span></div>
-                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fddhomeinvest.cz?w=800" alt="Náhled webu DD Home Invest" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://ddhomeinvest.cz" alt="Náhled webu DD Home Invest" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://ddhomeinvest.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu DD Home Invest"></iframe>
                     </div>
                     <div class="ref-info">
@@ -450,7 +452,7 @@
                     </div>
                     <div class="iframe-wrap">
                         <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>dvstav.cz</span></div>
-                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fdvstav.cz?w=800" alt="Náhled webu DV Stav" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://dvstav.cz" alt="Náhled webu DV Stav" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://dvstav.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu DV Stav"></iframe>
                     </div>
                     <div class="ref-info">
@@ -472,7 +474,7 @@
                     </div>
                     <div class="iframe-wrap">
                         <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>myskyvyroba.cz</span></div>
-                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmyskyvyroba.cz?w=800" alt="Náhled webu Myšky výroba" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://myskyvyroba.cz" alt="Náhled webu Myšky výroba" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://myskyvyroba.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu Myšky výroba"></iframe>
                     </div>
                     <div class="ref-info">
@@ -493,7 +495,7 @@
                     </div>
                     <div class="iframe-wrap">
                         <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>stavbycernik.cz</span></div>
-                        <img class="ref-preview-img" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fstavbycernik.cz?w=800" alt="Náhled webu Stavby Černík" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://stavbycernik.cz" alt="Náhled webu Stavby Černík" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
                         <iframe class="lazy-iframe" data-src="https://stavbycernik.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu Stavby Černík"></iframe>
                     </div>
                     <div class="ref-info">
@@ -717,6 +719,15 @@
                 obs.disconnect();
             }, { rootMargin: '300px 0px', threshold: 0.01 });
             obs.observe(iframe);
+        });
+
+        // Timeout pro screenshoty – pokud se nenačtou do 12s, skryjeme je
+        document.querySelectorAll('.ref-preview-img').forEach(img => {
+            setTimeout(() => {
+                if (!img.classList.contains('loaded')) {
+                    img.style.display = 'none';
+                }
+            }, 12000);
         });
 
         let audioCtx = null;
