@@ -1,928 +1,240 @@
-<!DOCTYPE html>
-<html lang="cs" id="htmlDoc">
+<!doctype html>
+<html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JMWEB // Jan Minařík - Tvorba webových stránek</title>
-    
-    <meta name="description" content="Tvořím moderní weby a e-shopy pro váš byznys. Profesionální tvorba webových stránek na míru a vlastní e-shopové řešení KAVKA s administrací, sklady, Zásilkovnou, kupóny a automatickými fakturami.">
-    <meta name="keywords" content="tvorba webu, webové stránky, e-shop na míru, KAVKA e-shop, programátor, Jan Minařík, JMWEB, web na míru, firemní web, administrace, Zásilkovna, Balíkovna">
-    <meta name="author" content="Jan Minařík">
-    <meta property="og:title" content="JMWEB // Jan Minařík - Tvorba webových stránek">
-    <meta property="og:description" content="Navrhuji a programuji webové stránky, které vypadají skvěle, fungují rychle a přivádí zákazníky.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.jmweb.cz/">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0f0f23">
-    <link rel="apple-touch-icon" href="icon-192.png">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "JMWEB | Jan Minařík",
-      "description": "Profesionální tvorba webových stránek a e-shopů na míru včetně vlastního e-shopového řešení KAVKA.",
-      "url": "https://www.jmweb.cz/",
-      "founder": { "@type": "Person", "name": "Jan Minařík" },
-      "areaServed": "Česká republika",
-      "priceRange": "$$",
-      "makesOffer": [ { "@type": "Offer", "name": "Tvorba webových stránek" }, { "@type": "Offer", "name": "E-shop KAVKA – vlastní e-shopové řešení" }, { "@type": "Offer", "name": "Optimalizace a údržba webů" } ],
-      "contactPoint": { "@type": "ContactPoint", "email": "janminarikcz@icloud.com", "contactType": "Zákaznická podpora" }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jan Minařík — webdesign & fotografie</title>
+  <meta name="description" content="Tvořím weby a e-shopy na míru a fotografuji firemní akce, svatby i rodinné příběhy. Jeden člověk, dvě disciplíny, jednotný vizuální rukopis.">
+  <meta name="keywords" content="tvorba webu, fotograf, firemní fotograf, svatební fotograf, rodinné focení, e-shop na míru, Jan Minařík, JMWEB">
+  <meta name="author" content="Jan Minařík">
+  <meta name="theme-color" content="#171913">
+  <meta property="og:title" content="Jan Minařík — webdesign & fotografie">
+  <meta property="og:description" content="Digitální zážitky a opravdové momenty. Weby, e-shopy a fotografie pro firmy i rodiny.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.jmweb.cz/">
+  <link rel="icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ProfessionalService",
+    "name":"Jan Minařík — webdesign & fotografie",
+    "url":"https://www.jmweb.cz/",
+    "email":"janminarikcz@icloud.com",
+    "areaServed":"Česká republika",
+    "founder":{"@type":"Person","name":"Jan Minařík"},
+    "makesOffer":[
+      {"@type":"Offer","name":"Tvorba webových stránek a e-shopů"},
+      {"@type":"Offer","name":"Fotografování firemních akcí"},
+      {"@type":"Offer","name":"Svatební fotografie"},
+      {"@type":"Offer","name":"Rodinné fotografie"}
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --ink:#171913; --ink-2:#24271f; --paper:#f2efe6; --paper-2:#e7e2d6;
+      --white:#fbfaf6; --acid:#d8ff63; --coral:#ff795f; --muted:#6d7065;
+      --line:rgba(23,25,19,.16); --radius:26px; --serif:'Instrument Serif',Georgia,serif;
+      --sans:'DM Sans',system-ui,sans-serif;
     }
-    </script>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:var(--sans);background:var(--paper);color:var(--ink);overflow-x:hidden}
+    a{color:inherit} img{display:block;max-width:100%} button{font:inherit}
+    ::selection{background:var(--acid);color:var(--ink)}
+    :focus-visible{outline:3px solid var(--coral);outline-offset:4px}
+    .skip{position:absolute;top:-80px;left:20px;background:var(--acid);padding:12px 18px;z-index:1000;border-radius:8px}.skip:focus{top:20px}
+    .wrap{width:min(1220px,calc(100% - 48px));margin-inline:auto}
+    .eyebrow{display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700}
+    .eyebrow:before{content:"";width:28px;height:2px;background:currentColor}
+    .display{font-family:var(--serif);font-weight:400;line-height:.92;letter-spacing:-.035em}
+    .section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:end;margin-bottom:48px}
+    .section-head h2{font-size:clamp(3.2rem,7vw,6.5rem)}
+    .section-head p{font-size:1.08rem;line-height:1.7;color:var(--muted);max-width:580px}
+    .section{padding:120px 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 22px;border-radius:999px;text-decoration:none;font-weight:700;border:1px solid var(--ink);transition:.25s ease;cursor:pointer}
+    .btn-dark{background:var(--ink);color:var(--white)}.btn-dark:hover{background:var(--acid);color:var(--ink);transform:translateY(-2px)}
+    .btn-light{background:var(--white);color:var(--ink);border-color:transparent}.btn-light:hover{background:var(--acid);transform:translateY(-2px)}
+    .btn-arrow:after{content:'↗';font-size:1.15em}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-            --panel-bg: rgba(15, 23, 42, 0.8);
-            --panel-border: rgba(255, 255, 255, 0.1);
-            --primary: #8b5cf6;
-            --primary-glow: rgba(139, 92, 246, 0.6);
-            --accent: #06b6d4;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --card-bg: rgba(30, 41, 59, 0.5);
-        }
+    header{position:fixed;inset:0 0 auto;z-index:100;padding:18px 0;transition:.3s}
+    header.scrolled{background:rgba(242,239,230,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:700;letter-spacing:-.03em}
+    .brand-mark{width:38px;height:38px;background:var(--ink);color:var(--acid);display:grid;place-items:center;border-radius:50%;font-family:var(--serif);font-size:1.45rem;font-style:italic}
+    .nav-links{display:flex;list-style:none;gap:30px}.nav-links a{text-decoration:none;font-size:.9rem;font-weight:600;position:relative}.nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:2px;background:var(--ink);transition:.25s}.nav-links a:hover:after{right:0}
+    .nav-actions{display:flex;align-items:center;gap:10px}.lang{border:1px solid var(--line);border-radius:999px;padding:5px;display:flex}.lang button{border:0;background:none;padding:6px 9px;border-radius:999px;font-size:.72rem;font-weight:700;cursor:pointer}.lang button.active{background:var(--ink);color:var(--white)}
+    .nav-cta{padding:10px 16px;font-size:.82rem}
 
-        html { overflow-x: hidden; background-color: #0f0f23; scroll-behavior: smooth; scroll-padding-top: 110px; }
-        body { background: var(--bg-gradient); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; overflow-x: hidden; width: 100%; position: relative; }
+    .hero{min-height:100svh;padding:140px 0 70px;display:flex;align-items:center;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:68px;align-items:center}
+    .hero-copy{position:relative;z-index:2}.hero-copy .eyebrow{margin-bottom:30px}.hero h1{font-size:clamp(4.6rem,8.4vw,8.3rem)}
+    .hero h1 em{color:var(--coral);font-weight:400}.hero-lead{font-size:1.15rem;line-height:1.7;color:var(--muted);max-width:560px;margin:30px 0}
+    .hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.availability{display:flex;align-items:center;gap:9px;font-size:.78rem;font-weight:700}.availability i{display:block;width:9px;height:9px;border-radius:50%;background:#54b454;box-shadow:0 0 0 5px rgba(84,180,84,.14)}
+    .visual{height:650px;position:relative}
+    .visual-main{position:absolute;inset:25px 0 50px 75px;border-radius:170px 170px 26px 26px;overflow:hidden;background:var(--ink)}
+    .visual-main img{width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+    .visual-small{position:absolute;left:0;bottom:5px;width:220px;aspect-ratio:4/3;border:9px solid var(--paper);border-radius:20px;overflow:hidden;transform:rotate(-5deg);box-shadow:0 20px 50px rgba(0,0,0,.2)}
+    .visual-small img{width:100%;height:100%;object-fit:cover}.visual-sticker{position:absolute;right:-22px;top:70px;width:128px;height:128px;border-radius:50%;background:var(--acid);display:grid;place-items:center;text-align:center;font-weight:700;font-size:.73rem;line-height:1.25;text-transform:uppercase;letter-spacing:.09em;transform:rotate(9deg)}
+    .visual-tag{position:absolute;right:20px;bottom:17px;background:var(--white);padding:12px 15px;border-radius:12px;font-size:.75rem;font-weight:700;box-shadow:0 12px 30px rgba(0,0,0,.14)}
+    .ticker{border-block:1px solid var(--line);overflow:hidden;background:var(--paper-2)}.ticker-track{display:flex;width:max-content;animation:tick 25s linear infinite;padding:18px 0}.ticker span{font-family:var(--serif);font-size:1.55rem;white-space:nowrap}.ticker span:after{content:'✦';font-family:var(--sans);font-size:.8rem;margin:0 32px;color:var(--coral)}@keyframes tick{to{transform:translateX(-50%)}}
 
-        ::-webkit-scrollbar { width: 12px; }
-        ::-webkit-scrollbar-track { background: #090914; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 6px; border: 3px solid #090914; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
-        
-        * { scrollbar-width: thin; scrollbar-color: #1e293b #090914; box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+    .services{background:var(--white)}
+    .service-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .service{border:1px solid var(--line);border-radius:var(--radius);padding:32px;min-height:290px;display:flex;flex-direction:column;transition:.3s;position:relative;overflow:hidden}
+    .service:hover{transform:translateY(-6px);box-shadow:0 22px 55px rgba(23,25,19,.1)}.service:nth-child(1){grid-column:span 7;background:var(--acid)}.service:nth-child(2){grid-column:span 5;background:var(--ink);color:var(--white)}.service:nth-child(3),.service:nth-child(4){grid-column:span 6}.service:nth-child(4){background:var(--paper-2)}
+    .service-no{font-size:.72rem;font-weight:700;letter-spacing:.12em;opacity:.55}.service-icon{margin-left:auto;width:50px;height:50px;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;font-size:1.25rem}.service h3{font-family:var(--serif);font-size:clamp(2rem,4vw,3.4rem);font-weight:400;margin-top:auto}.service p{margin-top:14px;max-width:510px;line-height:1.6;opacity:.72}.service-top{display:flex}
 
-        :focus-visible { outline: 2px dashed var(--primary); outline-offset: 4px; }
+    .photo{background:var(--ink);color:var(--white);position:relative}.photo .section-head p{color:#b4b6ad}.photo .eyebrow{color:var(--acid)}
+    .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.photo-card{position:relative;min-height:520px;border-radius:var(--radius);overflow:hidden;background:#333}.photo-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}.photo-card:hover img{transform:scale(1.04)}.photo-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.86))}.photo-info{position:absolute;z-index:2;left:26px;right:26px;bottom:25px}.photo-info .num{font-size:.7rem;letter-spacing:.14em;color:var(--acid);font-weight:700}.photo-info h3{font-family:var(--serif);font-weight:400;font-size:2.5rem;margin:8px 0}.photo-info p{line-height:1.55;color:#d8d8d3;font-size:.9rem}.photo-note{display:flex;justify-content:space-between;align-items:center;margin-top:30px;padding-top:25px;border-top:1px solid rgba(255,255,255,.16);gap:20px}.photo-note p{color:#b4b6ad;max-width:670px;line-height:1.6}
 
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+    .kavka-card{background:var(--coral);border-radius:36px;padding:55px;display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;position:relative;overflow:hidden}.kavka-card:after{content:'K';position:absolute;right:-30px;bottom:-115px;font-family:var(--serif);font-size:25rem;color:rgba(255,255,255,.11);line-height:1}.kavka-card h2{font-size:clamp(3.4rem,7vw,6rem);position:relative;z-index:1}.kavka-content{position:relative;z-index:1}.kavka-content>p{font-size:1.1rem;line-height:1.7;max-width:630px}.features{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:30px 0}.feature{display:flex;gap:10px;font-weight:600;font-size:.88rem}.feature:before{content:'✓';width:20px;height:20px;border-radius:50%;background:var(--ink);color:var(--acid);display:grid;place-items:center;font-size:.7rem;flex:none}
 
-        .container-wrapper { width: 100%; max-width: 1440px; margin: 0 auto; padding: 80px 40px; z-index: 10; position: relative; }
-        @media (max-width: 768px) { .container-wrapper { padding: 50px 20px; } }
+    .work{background:var(--paper-2)}.refs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.ref{padding:28px 24px 28px 0;border-bottom:1px solid var(--line);text-decoration:none;min-height:220px;position:relative}.ref:not(:nth-child(3n)){border-right:1px solid var(--line);margin-right:24px}.ref .arrow{position:absolute;right:24px;top:26px;font-size:1.4rem;transition:.25s}.ref:hover .arrow{transform:translate(4px,-4px)}.ref-type{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}.ref h3{font-family:var(--serif);font-size:2.2rem;font-weight:400;margin:42px 0 10px}.ref p{color:var(--muted);font-size:.9rem;line-height:1.5}
 
-        .section-title { font-size: 2.4rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.03em; background: linear-gradient(135deg, #fff, var(--primary), #ec4899); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 4s linear infinite; }
-        .section-subtitle { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 50px; max-width: 600px; line-height: 1.6; }
+    .process-list{counter-reset:steps;border-top:1px solid var(--line)}.step{display:grid;grid-template-columns:90px .8fr 1.2fr;gap:30px;padding:30px 0;border-bottom:1px solid var(--line);align-items:start}.step:before{counter-increment:steps;content:'0' counter(steps);font-size:.75rem;font-weight:700;color:var(--coral)}.step h3{font-family:var(--serif);font-size:2rem;font-weight:400}.step p{line-height:1.65;color:var(--muted);max-width:600px}
 
-        @keyframes pulse-glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.1); } }
-        @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes slide-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .faq{background:var(--white)}.faq-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px}.faq h2{font-size:clamp(3.5rem,7vw,6.5rem);position:sticky;top:120px}.faq-items{border-top:1px solid var(--line)}.faq-item{border-bottom:1px solid var(--line)}.faq-q{width:100%;padding:25px 0;background:none;border:0;display:flex;justify-content:space-between;gap:20px;text-align:left;font-weight:700;cursor:pointer}.faq-q span:last-child{font-size:1.3rem;transition:.3s}.faq-a{display:grid;grid-template-rows:0fr;transition:.35s}.faq-a>div{overflow:hidden}.faq-a p{color:var(--muted);line-height:1.65;padding:0 35px 25px 0}.faq-item.open .faq-a{grid-template-rows:1fr}.faq-item.open .faq-q span:last-child{transform:rotate(45deg)}
 
-        #particleContainer { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 0; pointer-events: none; }
-        #particleContainer canvas { display: block; width: 100%; height: 100%; outline: none; border: none; }
+    .contact{background:var(--acid);padding:100px 0 35px}.contact-top{display:grid;grid-template-columns:1.25fr .75fr;gap:50px;align-items:end;padding-bottom:75px}.contact h2{font-size:clamp(4.2rem,9vw,9rem);max-width:850px}.contact-side p{font-size:1.08rem;line-height:1.65;margin-bottom:28px}.email{font-family:var(--serif);font-size:clamp(1.35rem,2.4vw,2rem);text-decoration-thickness:1px;text-underline-offset:7px;overflow-wrap:anywhere}.footer{border-top:1px solid rgba(23,25,19,.25);padding-top:25px;display:flex;justify-content:space-between;gap:20px;font-size:.78rem;font-weight:600}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
 
-        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; transition: all 0.4s ease; border-bottom: 1px solid transparent; }
-        header.scrolled { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        nav { width: 100%; max-width: 1440px; margin: 0 auto; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; transition: padding 0.4s ease; animation: slide-up 0.8s ease-out; }
-        header.scrolled nav { padding: 15px 40px; }
-        @media (max-width: 768px) { nav { padding: 20px; } header.scrolled nav { padding: 15px 20px; } }
-        
-        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white;}
-        .logo span { color: var(--text-muted); font-weight: 400; font-size: 0.9rem; margin-left: 5px; }
-        .logo i { color: var(--primary); }
-
-        .nav-right { display: flex; align-items: center; gap: 20px; }
-        .lang-switch { display: flex; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 4px; border: 1px solid rgba(255,255,255,0.1); }
-        .lang-btn { background: transparent; border: none; color: #94a3b8; font-weight: 700; font-size: 0.8rem; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
-        .lang-btn.active { background: var(--primary); color: #fff; }
-        .status-badge { font-size: 0.85rem; font-weight: 700; color: #10b981; padding: 8px 16px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.3); }
-        @media (max-width: 600px) { .status-badge { display: none; } }
-        
-        .hero { width: 100%; max-width: 1440px; margin: 0 auto; padding: 140px 40px 80px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; z-index: 1; min-height: 90vh;}
-        @media (max-width: 1024px) { .hero { grid-template-columns: 1fr; text-align: center; padding: 120px 20px 60px 20px; gap: 40px; } .hero-actions { justify-content: center; } }
-
-        .hero-text h1 { font-size: 4.2rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; margin-bottom: 20px; animation: slide-up 1s ease-out; }
-        @media (max-width: 768px) { .hero-text h1 { font-size: 2.5rem; min-height: 90px; } }
-        
-        .dynamic-text { background: linear-gradient(135deg, #fff 0%, #c7d2fe 25%, var(--primary) 50%, #ec4899 75%, #fff 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 5s linear infinite; display: inline-block; }
-        .type-cursor { display: inline-block; width: 4px; height: 0.9em; background-color: var(--primary); margin-left: 5px; vertical-align: middle; animation: blink 1s step-end infinite; }
-
-        .hero-text p { font-size: 1.2rem; color: #94a3b8; font-weight: 500; line-height: 1.6; margin-bottom: 40px; max-width: 600px; animation: slide-up 1.2s ease-out; }
-        @media (max-width: 1024px) { .hero-text p { margin-left: auto; margin-right: auto; } }
-
-        .hero-highlights { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; }
-        .hero-highlight {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: #dbe4f0;
-            font-size: 0.9rem;
-            font-weight: 700;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-        }
-        .hero-highlight i { color: var(--accent); }
-        @media (max-width: 1024px) { .hero-highlights { justify-content: center; } }
-
-        .hero-actions { display: flex; gap: 20px; align-items: center; perspective: 1000px; }
-        
-        .magnetic-wrap { display: inline-block; padding: 20px; margin: -20px; }
-        .btn-configurator { padding: 20px 40px; font-size: 1.1rem; font-weight: 800; border-radius: 24px; background: linear-gradient(135deg, var(--primary), #ec4899, #8b5cf6); background-size: 200% auto; color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 14px; box-shadow: 0 20px 40px rgba(139, 92, 246, 0.5), 0 0 60px rgba(236, 72, 153, 0.3); transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; user-select: none; animation: gradient-shift 3s linear infinite, slide-up 1.4s ease-out; position: relative; overflow: hidden; will-change: transform; }
-        .btn-configurator::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s; }
-        .btn-configurator:hover { box-shadow: 0 30px 60px rgba(139, 92, 246, 0.7), 0 0 80px rgba(236, 72, 153, 0.4); }
-        .btn-configurator:hover::before { left: 100%; }
-        .btn-configurator:active { transform: scale(0.95) !important; }
-
-        .preview-container-3d { transform-style: preserve-3d; transition: transform 0.1s ease-out; will-change: transform; perspective: 1000px; }
-        .services-panel { background: var(--panel-bg); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); border: 1px solid var(--panel-border); border-radius: 40px; padding: 40px; box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.8), 0 0 60px rgba(139, 92, 246, 0.15); display: flex; flex-direction: column; gap: 20px; text-align: left; animation: slide-up 1.6s ease-out; }
-        @media (max-width: 480px) { .services-panel { padding: 20px; border-radius: 24px; } }
-        .services-panel h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; font-weight: 800; background: linear-gradient(90deg, #64748b, #8b5cf6, #64748b); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 4s linear infinite; }
-
-        .service-card { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 24px; display: flex; gap: 20px; align-items: center; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; overflow: hidden; user-select: none; }
-        @media (hover: hover) {
-            .service-card::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(139, 92, 246, 0.15), transparent 45%); pointer-events: none; z-index: 1; }
-            .service-card:hover { background: rgba(30, 41, 59, 0.6); border-color: rgba(139, 92, 246, 0.5); transform: translateX(10px) scale(1.02); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); }
-        }
-        .service-card i { font-size: 2rem; color: #475569; transition: all 0.3s; z-index: 2; }
-        .service-card:hover i { color: #8b5cf6; transform: scale(1.2) rotate(5deg); text-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
-        .service-card-content { z-index: 2; }
-        .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; color: #fff; }
-        .service-card p { font-size: 0.85rem; color: #94a3b8; line-height: 1.4; }
-
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-        .info-box { background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.05); padding: 30px; border-radius: 24px; transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .info-box:hover { background: rgba(15, 23, 42, 0.7); border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .info-box i { font-size: 2.5rem; background: linear-gradient(135deg, var(--accent), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; display: inline-block; }
-        .info-box h3 { font-size: 1.2rem; color: #fff; margin-bottom: 12px; font-weight: 800; }
-        .info-box p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
-
-        .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 50px; }
-        .browser-mockup { background: #1e293b; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; }
-        .browser-mockup:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(139, 92, 246, 0.25); border-color: rgba(139, 92, 246, 0.4); z-index: 5; }
-        .browser-header { height: 35px; background: rgba(15, 23, 42, 0.9); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 0 16px; gap: 8px; }
-        .browser-header .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .browser-header .dot.r { background: #ef4444; } .browser-header .dot.y { background: #f59e0b; } .browser-header .dot.g { background: #10b981; }
-        .browser-header .url-bar { margin-left: 15px; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 4px 12px; font-size: 0.75rem; color: #94a3b8; font-family: monospace; display: flex; align-items: center; gap: 8px; }
-        
-        /* Reference: na dotykových zařízeních (iPhone / Safari) se žádné iframy nenačítají,
-           jinak by kvůli nedostatku paměti prohlížeč reloadoval stránku. Místo toho se
-           ukazuje statický snímek webu (obrázek) + vždy viditelné tlačítko „Navštívit web".
-           Živý iframe se načítá líně jen na desktopu (hover); na mobilu ho JS skryje. */
-        .iframe-wrap { width: 100%; padding-top: 65%; position: relative; overflow: hidden; background: #0f172a; }
-        .ref-preview-fallback { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.98)); color: var(--text-muted); transition: opacity 0.4s ease; }
-        .ref-preview-fallback i { font-size: 2.4rem; color: var(--primary); }
-        .ref-preview-fallback span { font-family: monospace; font-size: 0.85rem; letter-spacing: 0.02em; }
-        .ref-preview-img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transition: opacity 0.4s ease; }
-        .ref-preview-img.loaded { z-index: 3; opacity: 1; }
-        .ref-preview-img.loaded ~ .ref-preview-fallback { opacity: 0; pointer-events: none; }
-        .iframe-wrap iframe { position: absolute; top: 0; left: 0; width: 400%; height: 400%; transform: scale(0.25); transform-origin: 0 0; border: none; pointer-events: none; z-index: 3; }
-
-        .ref-visit { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 18px; border-radius: 14px; background: linear-gradient(135deg, var(--primary), #ec4899); color: #fff; font-weight: 700; font-size: 0.85rem; text-decoration: none; box-shadow: 0 8px 22px rgba(139, 92, 246, 0.32); transition: transform 0.25s, box-shadow 0.3s; }
-        .ref-visit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(139, 92, 246, 0.45); }
-
-        .ref-info { padding: 20px; }
-        .ref-info h4 { font-size: 1.25rem; color: #fff; margin-bottom: 6px; font-weight: 800; }
-        .ref-info p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
-        .ref-tags { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-        .ref-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 8px; font-size: 0.7rem; color: #cbd5e1; font-weight: 600; }
-
-        .faq-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
-        .faq-item { background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; }
-        .faq-item.active { background: rgba(30, 41, 59, 0.6); border-color: rgba(139, 92, 246, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .faq-question { padding: 24px; width: 100%; text-align: left; background: transparent; border: none; cursor: pointer; color: #fff; font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-        .faq-question i { color: var(--primary); transition: transform 0.3s ease; }
-        .faq-item.active .faq-question i { transform: rotate(45deg); color: #ec4899; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1); padding: 0 24px; color: #94a3b8; line-height: 1.6; font-size: 0.95rem; }
-        .faq-item.active .faq-answer { padding-bottom: 24px; max-height: 300px; }
-
-        footer { width: 100%; max-width: 1440px; margin: 0 auto; padding: 30px 40px; border-top: 1px solid var(--panel-border); display: flex; justify-content: space-between; font-size: 0.85rem; color: #475569; font-weight: 600; z-index: 10; gap: 20px; }
-        @media (max-width: 600px) { footer { flex-direction: column; text-align: center; align-items: center; } }
-
-        .scroll-top {
-            position: fixed;
-            right: 18px;
-            bottom: 18px;
-            width: 52px;
-            height: 52px;
-            border-radius: 18px;
-            border: 1px solid rgba(255,255,255,0.12);
-            background: rgba(15, 23, 42, 0.72);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            color: #fff;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.45);
-            opacity: 0;
-            transform: translateY(14px);
-            pointer-events: none;
-            transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-            z-index: 120;
-        }
-        .scroll-top.show {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        .scroll-top:hover { border-color: rgba(139, 92, 246, 0.6); background: rgba(139, 92, 246, 0.16); }
-
-        /* KAVKA e-shop sekce */
-        #kavka { position: relative; }
-        #kavka .kavka-hero { text-align: center; max-width: 820px; margin: 0 auto 40px; }
-        #kavka .kavka-hero .section-title { display: inline-block; }
-        #kavka .kavka-hero .section-subtitle { margin-left: auto; margin-right: auto; }
-        #kavka .kavka-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; margin-bottom: 18px; background: rgba(139, 92, 246, 0.12); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 999px; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.03em; }
-        #kavka .kavka-badge i { color: var(--primary); }
-        #kavka .kavka-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        #kavka .kavka-card { background: var(--card-bg); border: 1px solid var(--panel-border); border-radius: 20px; padding: 26px; transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
-        #kavka .kavka-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(6,182,212,0.05)); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
-        @media (hover: hover) { #kavka .kavka-card:hover { transform: translateY(-4px); border-color: rgba(139, 92, 246, 0.45); box-shadow: 0 20px 40px rgba(139, 92, 246, 0.18); } #kavka .kavka-card:hover::before { opacity: 1; } }
-        #kavka .kavka-card i { font-size: 1.9rem; color: var(--primary); margin-bottom: 14px; display: inline-block; background: rgba(139, 92, 246, 0.12); width: 54px; height: 54px; line-height: 54px; text-align: center; border-radius: 14px; }
-        #kavka .kavka-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
-        #kavka .kavka-card p { font-size: 0.95rem; line-height: 1.55; color: var(--text-muted); }
-        #kavka .kavka-cta { text-align: center; margin-top: 40px; }
-        #kavka .kavka-btn { display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; font-size: 1.05rem; font-weight: 800; border-radius: 20px; background: linear-gradient(135deg, var(--primary), #ec4899); color: white; text-decoration: none; box-shadow: 0 15px 40px rgba(139, 92, 246, 0.35); transition: transform 0.25s, box-shadow 0.3s; }
-        #kavka .kavka-btn:hover { transform: translateY(-2px); box-shadow: 0 22px 50px rgba(139, 92, 246, 0.45); }
-    </style>
+    @media(max-width:980px){.nav-links{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding-top:150px}.visual{height:540px}.section-head{grid-template-columns:1fr;gap:22px}.photo-grid{grid-template-columns:1fr 1fr}.photo-card:last-child{grid-column:span 2;min-height:440px}.kavka-card,.faq-layout,.contact-top{grid-template-columns:1fr;gap:38px}.faq h2{position:static}.refs{grid-template-columns:1fr 1fr}.ref:not(:nth-child(3n)){border-right:0;margin-right:0}.ref:nth-child(odd){border-right:1px solid var(--line);margin-right:24px}}
+    @media(max-width:700px){.wrap{width:min(100% - 28px,1220px)}.section{padding:80px 0}.nav-cta{display:none}.hero h1{font-size:clamp(4rem,20vw,6rem)}.hero-grid{gap:32px}.visual{height:460px}.visual-main{inset:10px 0 48px 25px;border-radius:100px 100px 22px 22px}.visual-small{width:150px}.visual-sticker{width:100px;height:100px;right:-5px;font-size:.61rem}.service-grid{display:block}.service{margin-bottom:14px;min-height:260px}.photo-grid{display:block}.photo-card,.photo-card:last-child{min-height:470px;margin-bottom:14px}.photo-note{align-items:flex-start;flex-direction:column}.kavka-card{padding:30px 23px;border-radius:26px}.features{grid-template-columns:1fr}.refs{grid-template-columns:1fr}.ref,.ref:nth-child(odd){border-right:0;margin-right:0}.step{grid-template-columns:45px 1fr}.step p{grid-column:2}.footer{flex-direction:column}.contact{padding-top:75px}.contact-top{padding-bottom:55px}.hero-lead{font-size:1rem}.section-head h2{font-size:clamp(3.2rem,16vw,5rem)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker-track{animation:none}.reveal{opacity:1;transform:none;transition:none}*{transition-duration:.01ms!important}}
+  </style>
 </head>
 <body>
+<a class="skip" href="#main">Přeskočit na obsah</a>
+<header id="header">
+  <nav class="wrap" aria-label="Hlavní navigace">
+    <a class="brand" href="#top" aria-label="Jan Minařík — domů"><span class="brand-mark">Jm</span><span>Jan Minařík</span></a>
+    <ul class="nav-links">
+      <li><a href="#sluzby" data-t="nav_services">Služby</a></li>
+      <li><a href="#fotografie" data-t="nav_photo">Fotografie</a></li>
+      <li><a href="#reference" data-t="nav_work">Reference</a></li>
+      <li><a href="#proces" data-t="nav_process">Proces</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang" aria-label="Volba jazyka"><button class="active" data-lang="cs">CZ</button><button data-lang="en">EN</button></div>
+      <a class="btn btn-dark nav-cta" href="#kontakt" data-t="nav_contact">Napište mi</a>
+    </div>
+  </nav>
+</header>
 
-    <div id="particleContainer" aria-hidden="true"></div>
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <div class="eyebrow" data-t="hero_kicker">Webdesign & fotografie</div>
+        <h1 class="display" data-t-html="hero_title">Tvořím weby.<br><em>Chytám momenty.</em></h1>
+        <p class="hero-lead" data-t="hero_text">Pomáhám značkám i lidem vyprávět jejich příběh — čistým webem, funkčním e-shopem nebo fotografiemi, ke kterým se budete rádi vracet.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark btn-arrow" href="#sluzby" data-t="hero_cta">Objevit moje služby</a>
+          <span class="availability"><i></i><span data-t="available">Přijímám nové projekty</span></span>
+        </div>
+      </div>
+      <div class="visual reveal" aria-label="Ukázka fotografické tvorby">
+        <div class="visual-main"><img src="assets/photo-corporate.jpg" alt="Připravený prostor pro firemní konferenci" width="1536" height="1024"></div>
+        <div class="visual-small"><img src="assets/photo-wedding.jpg" alt="Detail svatebních prstenů a květin" width="1536" height="1024"></div>
+        <div class="visual-sticker" data-t-html="sticker">Weby<br>foto<br>& nápady</div>
+        <div class="visual-tag" data-t="tag">Od prvního pixelu po poslední snímek.</div>
+      </div>
+    </div>
+  </section>
 
-    <header id="mainHeader">
-        <nav aria-label="Hlavní navigace">
-            <a href="/" class="logo" aria-label="Návrat na domovskou stránku"><i class="fa-solid fa-code" aria-hidden="true"></i> JMWEB <span>/ Jan Minařík</span></a>
-            
-            <div class="nav-right">
-                <div class="lang-switch" aria-label="Přepínač jazyků">
-                    <button class="lang-btn active" data-lang="cz" onclick="setLang('cz', this)">CZ</button>
-                    <button class="lang-btn" data-lang="en" onclick="setLang('en', this)">EN</button>
-                </div>
-                <div class="status-badge" data-i18n="nav_status"><i class="fa-solid fa-circle" style="font-size: 0.6rem; margin-right: 5px; vertical-align: middle; animation: pulse-glow 2s ease-in-out infinite;" aria-hidden="true"></i> PŘIJÍMÁM PROJEKTY</div>
-            </div>
-        </nav>
-    </header>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Weby na míru</span><span>E-shopy KAVKA</span><span>Firemní akce</span><span>Svatby</span><span>Rodinné focení</span><span>Weby na míru</span><span>E-shopy KAVKA</span><span>Firemní akce</span><span>Svatby</span><span>Rodinné focení</span></div></div>
 
-    <main role="main">
-        <section class="hero reveal" id="heroSection">
-            <div class="hero-text">
-                <h1 data-i18n="hero_title_1">Tvořím <br><span class="dynamic-text" id="typewriterText">moderní weby</span><span class="type-cursor" aria-hidden="true"></span><br>pro váš byznys.</h1>
-                <p data-i18n="hero_desc">Navrhuji a programuji webové stránky, které vypadají skvěle, fungují rychle a přivádí zákazníky. Žádné šablony, vše stavím na míru vašim cílům.</p>
-                <div class="hero-highlights">
-                    <span class="hero-highlight"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i><span data-i18n="hero_chip_1">Web na míru</span></span>
-                    <span class="hero-highlight"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span data-i18n="hero_chip_2">Vlastní e-shop KAVKA</span></span>
-                    <span class="hero-highlight"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i><span data-i18n="hero_chip_3">Perfektní i na mobilu</span></span>
-                </div>
-                
-                <div class="hero-actions">
-                    <div class="magnetic-wrap" id="magnetBtnWrap">
-                        <a href="#kontakt" class="btn-configurator" id="btnConfigurator">
-                            <span data-i18n="hero_btn">Nezávazně mě kontaktovat</span>
-                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <section class="section services" id="sluzby">
+    <div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow" data-t="services_kicker">Co pro vás udělám</div><h2 class="display" data-t-html="services_title">Dvě disciplíny.<br>Jeden rukopis.</h2></div><p data-t="services_intro">Technické myšlení vývojáře propojuji s citem pro kompozici a příběh. Výsledkem je značka, která skvěle funguje a zároveň má vlastní tvář.</p></div>
+      <div class="service-grid">
+        <article class="service reveal"><div class="service-top"><span class="service-no">01 / WEB</span><span class="service-icon">⌘</span></div><h3 data-t="service_web_h">Weby na míru</h3><p data-t="service_web_p">Moderní, rychlé a přehledné weby bez univerzálních šablon. Od prvního návrhu přes vývoj až po spuštění a péči.</p></article>
+        <article class="service reveal"><div class="service-top"><span class="service-no">02 / SHOP</span><span class="service-icon">↗</span></div><h3 data-t="service_shop_h">E-shopy KAVKA</h3><p data-t="service_shop_p">Vlastní e-shopové řešení s administrací, skladem, dopravci, kupóny, fakturami a QR platbou.</p></article>
+        <article class="service reveal"><div class="service-top"><span class="service-no">03 / PHOTO</span><span class="service-icon">◎</span></div><h3 data-t="service_photo_h">Fotografie</h3><p data-t="service_photo_p">Přirozené fotografování firemních akcí, svateb a rodinných příběhů. Nenápadně, citlivě a bez zbytečného aranžování.</p></article>
+        <article class="service reveal"><div class="service-top"><span class="service-no">04 / CARE</span><span class="service-icon">＋</span></div><h3 data-t="service_care_h">Obsah & péče</h3><p data-t="service_care_p">Pravidelná údržba, optimalizace, produktové snímky i nový obsah. Váš web a vizuál mohou růst společně.</p></article>
+      </div>
+    </div>
+  </section>
 
-            <div class="preview-container-3d" id="parallaxContainer">
-                <div class="services-panel" id="mainPanel">
-                    <h2 data-i18n="srv_title">Co nabízím</h2>
-                    
-                    <div class="service-card">
-                        <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
-                        <div class="service-card-content">
-                            <h3 data-i18n="srv_1_h">Weby na zakázku</h3>
-                            <p data-i18n="srv_1_p">Vytvořím pro vás profesionální web, který bude rychlý, moderní a snadno ovladatelný.</p>
-                        </div>
-                    </div>
+  <section class="section photo" id="fotografie">
+    <div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow" data-t="photo_kicker">Fotografické služby</div><h2 class="display" data-t-html="photo_title">Skutečné chvíle.<br>Poctivé fotografie.</h2></div><p data-t="photo_intro">Nejde mi o strnulé pózy. Hledám světlo, drobné detaily a okamžiky, které mají atmosféru. Výsledné snímky upravuji v jednotném, přirozeném stylu.</p></div>
+      <div class="photo-grid">
+        <article class="photo-card reveal"><img src="assets/photo-corporate.jpg" loading="lazy" alt="Prázdný konferenční sál připravený pro firemní akci" width="1536" height="1024"><div class="photo-info"><span class="num">01 — BUSINESS</span><h3 data-t="corp_h">Firemní akce</h3><p data-t="corp_p">Konference, večírky, otevření provozovny i zákulisí vašeho týmu. Reportáž, která ukáže atmosféru i značku.</p></div></article>
+        <article class="photo-card reveal"><img src="assets/photo-wedding.jpg" loading="lazy" alt="Svatební prsteny položené mezi květinami" width="1536" height="1024"><div class="photo-info"><span class="num">02 — WEDDING</span><h3 data-t="wedding_h">Svatby</h3><p data-t="wedding_p">Od tichých příprav po večerní oslavu. Váš den zachytím citlivě, nenápadně a v celém jeho příběhu.</p></div></article>
+        <article class="photo-card reveal"><img src="assets/photo-family.jpg" loading="lazy" alt="Útulný rodinný interiér s dřevěnou hračkou" width="1536" height="1024"><div class="photo-info"><span class="num">03 — FAMILY</span><h3 data-t="family_h">Rodinné focení</h3><p data-t="family_p">U vás doma nebo venku, kde je vám dobře. Bez stresu, s prostorem pro spontánnost a opravdové emoce.</p></div></article>
+      </div>
+      <div class="photo-note reveal"><p data-t="photo_note">Každou zakázku nacením individuálně podle délky focení, místa a výsledného rozsahu. Napište mi pár vět o své představě a ozvu se s konkrétní nabídkou.</p><a class="btn btn-light btn-arrow" href="#kontakt" data-t="photo_cta">Poptat focení</a></div>
+    </div>
+  </section>
 
-                    <div class="service-card">
-                        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-                        <div class="service-card-content">
-                            <h3 data-i18n="srv_2_h">E-shop KAVKA</h3>
-                            <p data-i18n="srv_2_p">Vlastní e-shopové řešení s administrací, sklady, košíkem, Zásilkovnou, kupóny a automatickými fakturami s QR platbou.</p>
-                        </div>
-                    </div>
+  <section class="section" id="kavka">
+    <div class="wrap"><div class="kavka-card reveal"><div><div class="eyebrow" data-t="kavka_kicker">Vlastní řešení</div><h2 class="display">KAVKA</h2></div><div class="kavka-content"><p data-t="kavka_text">E-shop, který se přizpůsobí vašemu podnikání — ne naopak. Bez závislosti na cizí šabloně a s funkcemi, které skutečně využijete.</p><div class="features"><span class="feature" data-t="f1">Vlastní administrace a editor</span><span class="feature" data-t="f2">Sklad a chytrý košík</span><span class="feature" data-t="f3">Zásilkovna & Balíkovna API</span><span class="feature" data-t="f4">Kupóny a slevové kódy</span><span class="feature" data-t="f5">Export pro účetnictví</span><span class="feature" data-t="f6">Faktury a QR platby</span></div><a class="btn btn-dark btn-arrow" href="#kontakt" data-t="kavka_cta">Chci vlastní e-shop</a></div></div></div>
+  </section>
 
-                    <div class="service-card">
-                        <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
-                        <div class="service-card-content">
-                            <h3 data-i18n="srv_3_h">Optimalizace a údržba</h3>
-                            <p data-i18n="srv_3_p">Zrychlím váš existující web a vylepším ho, aby fungoval lépe a přiváděl více návštěvníků.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section class="section work" id="reference">
+    <div class="wrap"><div class="section-head reveal"><div><div class="eyebrow" data-t="work_kicker">Vybrané weby</div><h2 class="display" data-t="work_title">Práce v provozu.</h2></div><p data-t="work_intro">Žádné koncepty do šuplíku. Tohle jsou weby, které dnes slouží skutečným firmám a jejich zákazníkům.</p></div>
+      <div class="refs">
+        <a class="ref reveal" href="https://vdstavby.cz" target="_blank" rel="noopener"><span class="ref-type">Firemní web / Stavebnictví</span><span class="arrow">↗</span><h3>VD Stavby</h3><p data-t="r1">Přehled služeb, reference a kontaktní formulář.</p></a>
+        <a class="ref reveal" href="https://ddhomeinvest.cz" target="_blank" rel="noopener"><span class="ref-type">One-page / Reality</span><span class="arrow">↗</span><h3>DD Home Invest</h3><p data-t="r2">Integrovaný katalog a propracovaný kontakt.</p></a>
+        <a class="ref reveal" href="https://dvstav.cz" target="_blank" rel="noopener"><span class="ref-type">Vícestránkový web</span><span class="arrow">↗</span><h3>DV Stav</h3><p data-t="r3">Reference, přehled služeb a interaktivní mapa.</p></a>
+        <a class="ref reveal" href="https://myskyvyroba.cz" target="_blank" rel="noopener"><span class="ref-type">Katalog / Výroba</span><span class="arrow">↗</span><h3>Myšky Výroba</h3><p data-t="r4">Katalog originální zakázkové tvorby.</p></a>
+        <a class="ref reveal" href="https://stavbycernik.cz" target="_blank" rel="noopener"><span class="ref-type">Firemní web</span><span class="arrow">↗</span><h3>Stavby Černík</h3><p data-t="r5">Moderní prezentace stavební společnosti.</p></a>
+        <a class="ref reveal" href="#kontakt"><span class="ref-type" data-t="next_type">Další může být váš</span><span class="arrow">↗</span><h3 data-t="next_h">Nový projekt</h3><p data-t="next_p">Pojďme vytvořit něco, co bude fungovat i bavit.</p></a>
+      </div>
+    </div>
+  </section>
 
-        <section class="container-wrapper reveal" id="kavka">
-            <div class="kavka-hero">
-                <div class="kavka-badge"><i class="fa-solid fa-crow" aria-hidden="true"></i> <span data-i18n="kavka_badge">Nové – vlastní e-shopové řešení</span></div>
-                <h2 class="section-title" data-i18n="kavka_title">KAVKA — e-shop na míru</h2>
-                <p class="section-subtitle" data-i18n="kavka_sub">Nabízím i vlastní e-shopové řešení KAVKA. Vlastní administrační systém a editor, přehled skladu, košík, doprava Zásilkovna a Balíkovna API, kupóny a slevové kódy, export pro účetnictví a jejich programy, automatické faktury a generování QR kódu pro platbu.</p>
-            </div>
+  <section class="section" id="proces">
+    <div class="wrap"><div class="section-head reveal"><div><div class="eyebrow" data-t="process_kicker">Jak spolupráce probíhá</div><h2 class="display" data-t="process_title">Jasně. Lidsky. Společně.</h2></div><p data-t="process_intro">Ať jde o nový web nebo svatební den, vždy budete vědět, co se děje, kdy bude hotovo a kolik to bude stát.</p></div>
+      <div class="process-list">
+        <div class="step reveal"><h3 data-t="p1h">Seznámení</h3><p data-t="p1p">Řeknete mi svou představu, cíle a termín. Doptám se na vše podstatné a doporučím nejlepší cestu.</p></div>
+        <div class="step reveal"><h3 data-t="p2h">Návrh & nabídka</h3><p data-t="p2p">Připravím srozumitelný rozsah, cenovou nabídku a harmonogram bez skrytých překvapení.</p></div>
+        <div class="step reveal"><h3 data-t="p3h">Tvorba</h3><p data-t="p3p">Navrhuji, programuji nebo fotografuji. V průběhu zůstáváme v kontaktu a společně ladíme výsledek.</p></div>
+        <div class="step reveal"><h3 data-t="p4h">Předání & péče</h3><p data-t="p4p">Dostanete hotový web nebo pečlivě upravené fotografie. A pokud budete chtít, zůstávám nablízku i potom.</p></div>
+      </div>
+    </div>
+  </section>
 
-            <div class="kavka-grid">
-                <div class="kavka-card">
-                    <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
-                    <h3 data-i18n="kavka_1_h">Vlastní administrace a editor</h3>
-                    <p data-i18n="kavka_1_p">Přehledný administrační systém s vlastním editorem obsahu, produktů a stránek — bez závislosti na cizích šablonách.</p>
-                </div>
-                <div class="kavka-card">
-                    <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
-                    <h3 data-i18n="kavka_2_h">Skladovost a košík</h3>
-                    <p data-i18n="kavka_2_p">Sledování stavu skladu v reálném čase, varianty produktů a rychlý košík s přehledným checkoutem.</p>
-                </div>
-                <div class="kavka-card">
-                    <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
-                    <h3 data-i18n="kavka_3_h">Zásilkovna & Balíkovna API</h3>
-                    <p data-i18n="kavka_3_p">Napojení dopravců — Zásilkovna a Balíkovna přes API, výběr výdejního místa přímo v košíku.</p>
-                </div>
-                <div class="kavka-card">
-                    <i class="fa-solid fa-ticket" aria-hidden="true"></i>
-                    <h3 data-i18n="kavka_4_h">Kupóny a slevové kódy</h3>
-                    <p data-i18n="kavka_4_p">Neomezené přidávání kupónů a slevových kódů — procentuální, pevné, s omezením platnosti a počtu využití.</p>
-                </div>
-                <div class="kavka-card">
-                    <i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i>
-                    <h3 data-i18n="kavka_5_h">Export do účetnictví</h3>
-                    <p data-i18n="kavka_5_p">Export objednávek a faktur pro účetnictví a účetní programy — snadné předání účetní bez ručního přepisování.</p>
-                </div>
-                <div class="kavka-card">
-                    <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
-                    <h3 data-i18n="kavka_6_h">Automatické faktury a QR platba</h3>
-                    <p data-i18n="kavka_6_p">Faktury se generují automaticky ke každé objednávce, včetně QR kódu pro platbu — zákazník zaplatí okamžitě.</p>
-                </div>
-            </div>
+  <section class="section faq">
+    <div class="wrap faq-layout"><div class="reveal"><div class="eyebrow">FAQ</div><h2 class="display" data-t-html="faq_title">Možná vás<br>napadá…</h2></div><div class="faq-items reveal">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span data-t="q1">Kolik stojí web nebo focení?</span><span>＋</span></button><div class="faq-a"><div><p data-t="a1">Každý projekt je jiný, proto cenu připravuji na míru. Po krátké úvodní konzultaci ode mě dostanete konkrétní nabídku zdarma a bez závazků.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span data-t="q2">Jak dlouho trvá vytvoření webu?</span><span>＋</span></button><div class="faq-a"><div><p data-t="a2">Jednodušší web může být hotový do týdne. Rozsáhlejší prezentace nebo e-shop obvykle zabere 2 až 4 týdny podle rozsahu a připravenosti podkladů.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span data-t="q3">Kde fotografujete?</span><span>＋</span></button><div class="faq-a"><div><p data-t="a3">Za focením rád přijedu po celé České republice. Rodinné focení může proběhnout u vás doma nebo venku, akce a svatby přímo na místě konání.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span data-t="q4">Jak fotografie dostanu?</span><span>＋</span></button><div class="faq-a"><div><p data-t="a4">Pečlivě vybrané a upravené snímky dostanete v online galerii ve vysokém rozlišení i ve verzi vhodné pro sdílení.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span data-t="q5">Budu si moci web upravovat?</span><span>＋</span></button><div class="faq-a"><div><p data-t="a5">Ano. Pokud si to přejete, připravím přehlednou administraci a ukážu vám, jak měnit texty, fotografie nebo produkty bez programování.</p></div></div></div>
+    </div></div>
+  </section>
 
-            <div class="kavka-cta">
-                <a href="#kontakt" class="kavka-btn">
-                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                    <span data-i18n="kavka_cta">Mám zájem o KAVKA e-shop</span>
-                </a>
-            </div>
-        </section>
+  <section class="contact" id="kontakt">
+    <div class="wrap"><div class="contact-top"><div><div class="eyebrow" data-t="contact_kicker">Máte nápad?</div><h2 class="display" data-t-html="contact_title">Pojďme ho<br><em>uskutečnit.</em></h2></div><div class="contact-side"><p data-t="contact_text">Napište mi pár vět o svém webu, akci, svatbě nebo rodinném focení. Ozvu se a domluvíme další krok.</p><a class="email" href="mailto:janminarikcz@icloud.com">janminarikcz@icloud.com</a></div></div><div class="footer"><span>© 2026 Jan Minařík</span><span data-t="footer">Webdesign • e-shopy • fotografie</span><a href="#top" data-t="up">Zpět nahoru ↑</a></div></div>
+  </section>
+</main>
 
-        <section class="container-wrapper reveal">
-            <h2 class="section-title" data-i18n="proc_title">Jak probíhá spolupráce?</h2>
-            <p class="section-subtitle" data-i18n="proc_sub">Zakládám si na transparentnosti a plynulé komunikaci. O svůj projekt se nemusíte bát, celým procesem vás provedu.</p>
-            
-            <div class="info-grid">
-                <div class="info-box">
-                    <i class="fa-solid fa-comments" aria-hidden="true"></i>
-                    <h3 data-i18n="proc_1_h">1. Konzultace a ceník</h3>
-                    <p data-i18n="proc_1_p">Společně si definujeme, co váš web potřebuje. Následně sestavím transparentní cenovou nabídku bez skrytých háčků.</p>
-                </div>
-                <div class="info-box">
-                    <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
-                    <h3 data-i18n="proc_2_h">2. Grafický návrh</h3>
-                    <p data-i18n="proc_2_p">Než napíšu první řádek kódu, připravím interaktivní vizuální návrh (UI/UX) přesně podle vaší firemní identity a cílů.</p>
-                </div>
-                <div class="info-box">
-                    <i class="fa-solid fa-code" aria-hidden="true"></i>
-                    <h3 data-i18n="proc_3_h">3. Samotný vývoj</h3>
-                    <p data-i18n="proc_3_p">Grafiku převedu do superrychlého čistého kódu, nastavím administraci a zajistím perfektní zobrazení i na mobilech.</p>
-                </div>
-                <div class="info-box">
-                    <i class="fa-solid fa-rocket" aria-hidden="true"></i>
-                    <h3 data-i18n="proc_4_h">4. Testování a spuštění</h3>
-                    <p data-i18n="proc_4_p">Web důkladně otestujeme, napojíme na analytiku, zajistíme základní SEO a slavnostně ho vypustíme do světa.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="container-wrapper reveal">
-            <h2 class="section-title" data-i18n="ref_title">Vybrané reference</h2>
-            <p class="section-subtitle" data-i18n="ref_sub">Prohlédněte si náhledy webů mých klientů. Klikněte na „Navštívit web" a podívejte se na opravdový web.</p>
-
-            <div class="ref-grid">
-                <div class="browser-mockup">
-                    <div class="browser-header">
-                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
-                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://vdstavby.cz</div>
-                    </div>
-                    <div class="iframe-wrap">
-                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>vdstavby.cz</span></div>
-                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://vdstavby.cz" alt="Náhled webu VD Stavby" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
-                        <iframe class="lazy-iframe" data-src="https://vdstavby.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu VD Stavby"></iframe>
-                    </div>
-                    <div class="ref-info">
-                        <h4>VD Stavby</h4>
-                        <p data-i18n="ref_1_p">Moderní prezentace stavební firmy s důrazem na přehlednost služeb, ukázky referencí a kontaktní formulář.</p>
-                        <div class="ref-tags">
-                            <span class="ref-tag" data-i18n="tag_multi">Vícestránkový web</span>
-                            <span class="ref-tag" data-i18n="tag_ref">Reference</span>
-                            <span class="ref-tag" data-i18n="tag_form">Formulář</span>
-                        </div>
-                        <a class="ref-visit" href="https://vdstavby.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-
-                <div class="browser-mockup">
-                    <div class="browser-header">
-                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
-                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://ddhomeinvest.cz</div>
-                    </div>
-                    <div class="iframe-wrap">
-                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>ddhomeinvest.cz</span></div>
-                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://ddhomeinvest.cz" alt="Náhled webu DD Home Invest" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
-                        <iframe class="lazy-iframe" data-src="https://ddhomeinvest.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu DD Home Invest"></iframe>
-                    </div>
-                    <div class="ref-info">
-                        <h4>DD Home Invest</h4>
-                        <p data-i18n="ref_2_p">Pokročilý jednostránkový web (One-page) s integrovaným katalogem a propracovaným kontaktním formulářem.</p>
-                        <div class="ref-tags">
-                            <span class="ref-tag" data-i18n="tag_one">One-page web</span>
-                            <span class="ref-tag" data-i18n="tag_cat">Katalog</span>
-                            <span class="ref-tag" data-i18n="tag_form">Kontaktní formulář</span>
-                        </div>
-                        <a class="ref-visit" href="https://ddhomeinvest.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-
-                <div class="browser-mockup">
-                    <div class="browser-header">
-                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
-                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://dvstav.cz</div>
-                    </div>
-                    <div class="iframe-wrap">
-                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>dvstav.cz</span></div>
-                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://dvstav.cz" alt="Náhled webu DV Stav" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
-                        <iframe class="lazy-iframe" data-src="https://dvstav.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu DV Stav"></iframe>
-                    </div>
-                    <div class="ref-info">
-                        <h4>DV Stav</h4>
-                        <p data-i18n="ref_3_p">Profesionální vícestránkový web pro stavební práce. Obsahuje sekci referencí a interaktivní mapu se sídlem firmy.</p>
-                        <div class="ref-tags">
-                            <span class="ref-tag" data-i18n="tag_multi">Vícestránkový web</span>
-                            <span class="ref-tag" data-i18n="tag_ref">Reference</span>
-                            <span class="ref-tag" data-i18n="tag_map">Interaktivní mapa</span>
-                        </div>
-                        <a class="ref-visit" href="https://dvstav.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-
-                <div class="browser-mockup">
-                    <div class="browser-header">
-                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
-                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://myskyvyroba.cz</div>
-                    </div>
-                    <div class="iframe-wrap">
-                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>myskyvyroba.cz</span></div>
-                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://myskyvyroba.cz" alt="Náhled webu Myšky výroba" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
-                        <iframe class="lazy-iframe" data-src="https://myskyvyroba.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu Myšky výroba"></iframe>
-                    </div>
-                    <div class="ref-info">
-                        <h4>Myšky Výroba</h4>
-                        <p data-i18n="ref_4_p">Katalogový vícestránkový web a prezentace zakázkové výroby originálních dekorací do domácnosti.</p>
-                        <div class="ref-tags">
-                            <span class="ref-tag" data-i18n="tag_multi">Vícestránkový web</span>
-                            <span class="ref-tag" data-i18n="tag_cat">Katalog produktů</span>
-                        </div>
-                        <a class="ref-visit" href="https://myskyvyroba.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-
-                <div class="browser-mockup">
-                    <div class="browser-header">
-                        <div class="dot r" aria-hidden="true"></div><div class="dot y" aria-hidden="true"></div><div class="dot g" aria-hidden="true"></div>
-                        <div class="url-bar"><i class="fa-solid fa-lock" style="font-size:0.6rem; color:#10b981;" aria-hidden="true"></i> https://stavbycernik.cz</div>
-                    </div>
-                    <div class="iframe-wrap">
-                        <div class="ref-preview-fallback"><i class="fa-solid fa-globe" aria-hidden="true"></i><span>stavbycernik.cz</span></div>
-                        <img class="ref-preview-img" src="https://image.thum.io/get/width/800/crop/600/noanimate/https://stavbycernik.cz" alt="Náhled webu Stavby Černík" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
-                        <iframe class="lazy-iframe" data-src="https://stavbycernik.cz" src="about:blank" loading="lazy" tabindex="-1" title="Náhled webu Stavby Černík"></iframe>
-                    </div>
-                    <div class="ref-info">
-                        <h4>Stavby Černík</h4>
-                        <p data-i18n="ref_5_p">Moderní webová prezentace pro stavební společnost. Projekt je aktuálně ve fázi aktivního vývoje.</p>
-                        <div class="ref-tags">
-                            <span class="ref-tag" style="background: rgba(245, 158, 11, 0.2); color: #fcd34d; border-color: rgba(245, 158, 11, 0.3);" data-i18n="tag_dev"><i class="fa-solid fa-person-digging" aria-hidden="true"></i> Ve vývoji</span>
-                            <span class="ref-tag" data-i18n="tag_corp">Firemní web</span>
-                        </div>
-                        <a class="ref-visit" href="https://stavbycernik.cz" target="_blank" rel="noopener noreferrer"><span data-i18n="ref_btn">Navštívit web</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="container-wrapper reveal">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2 class="section-title" data-i18n="faq_title">Často kladené dotazy</h2>
-                <p class="section-subtitle" style="margin: 0 auto;" data-i18n="faq_sub">Odpovědi na otázky, na které se klienti ptají nejčastěji.</p>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-1">
-                        <span data-i18n="faq_1_q">Jak dlouho trvá tvorba webu?</span> <i class="fa-solid fa-plus" aria-hidden="true"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-ans-1" role="region">
-                        <p data-i18n="faq_1_a">Záleží na složitosti. Jednoduchá firemní vizitka může být hotová do týdne. Rozsáhlejší vícestránkový web nebo web s pokročilejšími funkcemi zabere zhruba 2 až 4 týdny. Termín i cenu vám rád spočítám na míru — stačí mě kontaktovat.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-2">
-                        <span data-i18n="faq_2_q">Co ode mě budete potřebovat?</span> <i class="fa-solid fa-plus" aria-hidden="true"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-ans-2" role="region">
-                        <p data-i18n="faq_2_a">Na začátku mi stačí stručně popsat, čím se zabýváte a jaký je cíl webu. Pokud máte logo, fotky a texty, je to skvělé. Pokud ne, postarám se o to nebo vám pomohu najít vhodné řešení (např. copywriting nebo úpravu loga).</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-3">
-                        <span data-i18n="faq_3_q">Budu si moci web upravovat sám?</span> <i class="fa-solid fa-plus" aria-hidden="true"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-ans-3" role="region">
-                        <p data-i18n="faq_3_a">Ano, pokud si to budete přát. Většinu projektů stavím tak, abyste měli k dispozici přehlednou administraci (CMS), přes kterou si zvládnete sami upravit texty, přidat fotky nebo napsat článek na blog, a to i bez znalosti programování.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-4">
-                        <span data-i18n="faq_4_q">Co umí e-shop KAVKA?</span> <i class="fa-solid fa-plus" aria-hidden="true"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-ans-4" role="region">
-                        <p data-i18n="faq_4_a">KAVKA je moje vlastní e-shopové řešení. Obsahuje vlastní administrační systém a editor, sledování skladu, košík a checkout, napojení dopravců Zásilkovna a Balíkovna přes API, přidávání kupónů a slevových kódů, export objednávek pro účetnictví a účetní programy a automatické generování faktur včetně QR kódu pro platbu.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container-wrapper reveal" id="kontakt" style="text-align: center; padding-top: 40px; padding-bottom: 80px;">
-            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg, #fff, #8b5cf6, #ec4899); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 4s linear infinite;" data-i18n="cta_title">Máte zájem o spolupráci?</h2>
-            <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 35px; max-width: 560px; margin-left: auto; margin-right: auto;" data-i18n="cta_sub">Proberme váš projekt. Napište mi e-mail — nabízím tvorbu webů na míru i vlastní e-shopové řešení KAVKA. V případě zájmu vám rád připravím i online nacenění na míru.</p>
-            
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="mailto:janminarikcz@icloud.com" aria-label="Napsat e-mail" style="display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; font-size: 1.1rem; font-weight: 700; border-radius: 24px; background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: white; text-decoration: none; box-shadow: 0 20px 40px rgba(6, 182, 212, 0.4), 0 0 60px rgba(139, 92, 246, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
-                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                    janminarikcz@icloud.com
-                </a>
-                <a href="#kavka" style="display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px; font-size: 1.1rem; font-weight: 700; border-radius: 24px; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); color: white; text-decoration: none; transition: all 0.3s ease;">
-                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-                    <span data-i18n="cta_btn">E-shop KAVKA</span>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div>&copy; 2026 JMWEB // Jan Minařík. <span data-i18n="footer_rights">Všechna práva vyhrazena.</span></div>
-        <div>STABLE RELEASE // V4.1 I18N</div>
-    </footer>
-
-    <button class="scroll-top" id="scrollTopBtn" type="button" aria-label="Zpět nahoru">
-        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
-    </button>
-
-    <script>
-        // i18n Překladový Engine
-        const translations = {
-            cz: {
-                nav_status: '<i class="fa-solid fa-circle" style="font-size: 0.6rem; margin-right: 5px; vertical-align: middle; animation: pulse-glow 2s ease-in-out infinite;"></i> PŘIJÍMÁM PROJEKTY',
-                hero_title_1: 'Tvořím <br><span class="dynamic-text" id="typewriterText">moderní weby</span><span class="type-cursor"></span><br>pro váš byznys.',
-                hero_desc: 'Navrhuji a programuji webové stránky, které vypadají skvěle, fungují rychle a přivádějí zákazníky. Žádné šablony, vše stavím na míru vašim cílům.',
-                hero_chip_1: 'Web na míru', hero_chip_2: 'Vlastní e-shop KAVKA', hero_chip_3: 'Perfektní i na mobilu',
-                hero_btn: 'Nezávazně mě kontaktovat',
-                srv_title: 'Co nabízím',
-                srv_1_h: 'Weby na zakázku', srv_1_p: 'Vytvořím pro vás profesionální web, který bude rychlý, moderní a snadno ovladatelný.',
-                srv_2_h: 'E-shop KAVKA', srv_2_p: 'Vlastní e-shopové řešení s administrací, sklady, košíkem, Zásilkovnou, kupóny a automatickými fakturami s QR platbou.',
-                srv_3_h: 'Optimalizace a údržba', srv_3_p: 'Zrychlím váš existující web a vylepším ho, aby fungoval lépe a přiváděl více návštěvníků.',
-                kavka_badge: 'Nové – vlastní e-shopové řešení',
-                kavka_title: 'KAVKA — e-shop na míru',
-                kavka_sub: 'Nabízím i vlastní e-shopové řešení KAVKA. Vlastní administrační systém a editor, přehled skladu, košík, doprava Zásilkovna a Balíkovna API, kupóny a slevové kódy, export pro účetnictví a jejich programy, automatické faktury a generování QR kódu pro platbu.',
-                kavka_1_h: 'Vlastní administrace a editor', kavka_1_p: 'Přehledný administrační systém s vlastním editorem obsahu, produktů a stránek — bez závislosti na cizích šablonách.',
-                kavka_2_h: 'Skladovost a košík', kavka_2_p: 'Sledování stavu skladu v reálném čase, varianty produktů a rychlý košík s přehledným checkoutem.',
-                kavka_3_h: 'Zásilkovna & Balíkovna API', kavka_3_p: 'Napojení dopravců — Zásilkovna a Balíkovna přes API, výběr výdejního místa přímo v košíku.',
-                kavka_4_h: 'Kupóny a slevové kódy', kavka_4_p: 'Neomezené přidávání kupónů a slevových kódů — procentuální, pevné, s omezením platnosti a počtu využití.',
-                kavka_5_h: 'Export do účetnictví', kavka_5_p: 'Export objednávek a faktur pro účetnictví a účetní programy — snadné předání účetní bez ručního přepisování.',
-                kavka_6_h: 'Automatické faktury a QR platba', kavka_6_p: 'Faktury se generují automaticky ke každé objednávce, včetně QR kódu pro platbu — zákazník zaplatí okamžitě.',
-                kavka_cta: 'Mám zájem o KAVKA e-shop',
-                proc_title: 'Jak probíhá spolupráce?', proc_sub: 'Zakládám si na transparentnosti a plynulé komunikaci. O svůj projekt se nemusíte bát, celým procesem vás provedu.',
-                proc_1_h: '1. Konzultace a ceník', proc_1_p: 'Společně si definujeme, co váš web potřebuje. Následně sestavím transparentní cenovou nabídku bez skrytých háčků.',
-                proc_2_h: '2. Grafický návrh', proc_2_p: 'Než napíšu první řádek kódu, připravím interaktivní vizuální návrh (UI/UX) přesně podle vaší firemní identity a cílů.',
-                proc_3_h: '3. Samotný vývoj', proc_3_p: 'Grafiku převedu do superrychlého čistého kódu, nastavím administraci a zajistím perfektní zobrazení i na mobilech.',
-                proc_4_h: '4. Testování a spuštění', proc_4_p: 'Web důkladně otestujeme, napojíme na analytiku, zajistíme základní SEO a slavnostně ho vypustíme do světa.',
-                ref_title: 'Vybrané reference', ref_sub: 'Prohlédněte si náhledy webů mých klientů. Klikněte na „Navštívit web" a podívejte se na opravdový web.',
-                ref_btn: 'Navštívit web',
-                ref_1_p: 'Moderní prezentace stavební firmy s důrazem na přehlednost služeb, ukázky referencí a kontaktní formulář.',
-                ref_2_p: 'Pokročilý jednostránkový web (One-page) s integrovaným katalogem a propracovaným kontaktním formulářem.',
-                ref_3_p: 'Profesionální vícestránkový web pro stavební práce. Obsahuje sekci referencí a interaktivní mapu se sídlem firmy.',
-                ref_4_p: 'Katalogový vícestránkový web a prezentace zakázkové výroby originálních dekorací do domácnosti.',
-                ref_5_p: 'Moderní webová prezentace pro stavební společnost. Projekt je aktuálně ve fázi aktivního vývoje.',
-                tag_multi: 'Vícestránkový web', tag_one: 'One-page web', tag_ref: 'Reference', tag_form: 'Formulář', tag_cat: 'Katalog', tag_map: 'Interaktivní mapa', tag_dev: '<i class="fa-solid fa-person-digging"></i> Ve vývoji', tag_corp: 'Firemní web',
-                faq_title: 'Často kladené dotazy', faq_sub: 'Odpovědi na otázky, na které se klienti ptají nejčastěji.',
-                faq_1_q: 'Jak dlouho trvá tvorba webu?', faq_1_a: 'Záleží na složitosti. Jednoduchá firemní vizitka může být hotová do týdne. Rozsáhlejší vícestránkový web nebo web s pokročilejšími funkcemi zabere zhruba 2 až 4 týdny. Termín i cenu vám rád spočítám na míru — stačí mě kontaktovat.',
-                faq_2_q: 'Co ode mě budete potřebovat?', faq_2_a: 'Na začátku mi stačí stručně popsat, čím se zabýváte a jaký je cíl webu. Pokud máte logo, fotky a texty, je to skvělé. Pokud ne, postarám se o to nebo vám pomohu najít vhodné řešení (např. copywriting nebo úpravu loga).',
-                faq_3_q: 'Budu si moci web upravovat sám?', faq_3_a: 'Ano, pokud si to budete přát. Většinu projektů stavím tak, abyste měli k dispozici přehlednou administraci (CMS), přes kterou si zvládnete sami upravit texty, přidat fotky nebo napsat článek na blog, a to i bez znalosti programování.',
-                faq_4_q: 'Co umí e-shop KAVKA?', faq_4_a: 'KAVKA je moje vlastní e-shopové řešení. Obsahuje vlastní administrační systém a editor, sledování skladu, košík a checkout, napojení dopravců Zásilkovna a Balíkovna přes API, přidávání kupónů a slevových kódů, export objednávek pro účetnictví a účetní programy a automatické generování faktur včetně QR kódu pro platbu.',
-                cta_title: 'Máte zájem o spolupráci?', cta_sub: 'Proberme váš projekt. Napište mi e-mail — nabízím tvorbu webů na míru i vlastní e-shopové řešení KAVKA. V případě zájmu vám rád připravím i online nacenění na míru.', cta_btn: 'E-shop KAVKA',
-                footer_rights: 'Všechna práva vyhrazena.'
-            },
-            en: {
-                nav_status: '<i class="fa-solid fa-circle" style="font-size: 0.6rem; margin-right: 5px; vertical-align: middle; animation: pulse-glow 2s ease-in-out infinite;"></i> ACCEPTING PROJECTS',
-                hero_title_1: 'I craft <br><span class="dynamic-text" id="typewriterText">modern websites</span><span class="type-cursor"></span><br>for your business.',
-                hero_desc: 'I design and code websites that look great, run fast, and bring customers. No templates, everything built custom for your goals.',
-                hero_chip_1: 'Tailored website', hero_chip_2: 'KAVKA e-shop solution', hero_chip_3: 'Perfect on mobile',
-                hero_btn: 'Get in touch',
-                srv_title: 'What I offer',
-                srv_1_h: 'Custom Websites', srv_1_p: 'I will create a professional, fast, modern, and easy-to-manage website for you.',
-                srv_2_h: 'KAVKA e-shop', srv_2_p: 'My own e-shop solution — admin, stock, cart, Zásilkovna delivery, coupons and automatic invoices with QR payment.',
-                srv_3_h: 'Optimization & Maintenance', srv_3_p: 'I will speed up your existing website and improve it to bring more visitors.',
-                kavka_badge: 'New — my own e-shop solution',
-                kavka_title: 'KAVKA — custom e-shop',
-                kavka_sub: 'I also offer my own e-shop solution called KAVKA. Custom admin system and editor, stock tracking, cart, Zásilkovna and Balíkovna API delivery, coupons and discount codes, export to accounting and their programs, automatic invoices and QR payment code generation.',
-                kavka_1_h: 'Custom admin & editor', kavka_1_p: 'Clean admin system with a custom editor for content, products and pages — no dependency on third-party templates.',
-                kavka_2_h: 'Stock & cart', kavka_2_p: 'Real-time stock tracking, product variants and a fast cart with a clean checkout.',
-                kavka_3_h: 'Zásilkovna & Balíkovna API', kavka_3_p: 'Carriers connected via API — Zásilkovna and Balíkovna, pickup point selection directly in the cart.',
-                kavka_4_h: 'Coupons & discount codes', kavka_4_p: 'Unlimited coupons and discount codes — percentage, fixed, with expiry and usage limits.',
-                kavka_5_h: 'Accounting export', kavka_5_p: 'Export orders and invoices for accounting programs — easy handover to your accountant without manual rewriting.',
-                kavka_6_h: 'Automatic invoices & QR pay', kavka_6_p: 'Invoices are generated automatically for every order, including a QR code for instant payment.',
-                kavka_cta: 'I\'m interested in KAVKA',
-                proc_title: 'How does it work?', proc_sub: 'I value transparency and smooth communication. I will guide you through the entire process.',
-                proc_1_h: '1. Consultation & Quote', proc_1_p: 'Together we define what your website needs. Then I create a transparent quote with no hidden catches.',
-                proc_2_h: '2. UI/UX Design', proc_2_p: 'Before I write the first line of code, I prepare an interactive visual design matching your brand.',
-                proc_3_h: '3. Development', proc_3_p: 'I convert the design into super-fast clean code, set up the CMS, and ensure perfect mobile responsiveness.',
-                proc_4_h: '4. Testing & Launch', proc_4_p: 'We thoroughly test the website, connect analytics, ensure basic SEO, and launch it to the world.',
-                ref_title: 'Selected References', ref_sub: 'Browse previews of my clients\' websites. Click "Visit website" to open the live site.',
-                ref_btn: 'Visit website',
-                ref_1_p: 'Modern presentation of a construction company with an emphasis on clarity, portfolio, and contact forms.',
-                ref_2_p: 'Advanced One-page website with an integrated product catalog and sophisticated contact form.',
-                ref_3_p: 'Professional multi-page website for construction work. Includes a reference section and interactive map.',
-                ref_4_p: 'Catalog multi-page website presenting custom production of original home decorations.',
-                ref_5_p: 'Modern web presentation for a construction company. The project is currently in active development.',
-                tag_multi: 'Multi-page', tag_one: 'One-page', tag_ref: 'Portfolio', tag_form: 'Form', tag_cat: 'Catalog', tag_map: 'Interactive map', tag_dev: '<i class="fa-solid fa-person-digging"></i> In development', tag_corp: 'Corporate',
-                faq_title: 'Frequently Asked Questions', faq_sub: 'Answers to the questions clients ask most often.',
-                faq_1_q: 'How long does it take?', faq_1_a: 'It depends on complexity. A simple business card site can be done in a week. Larger multi-page websites or builds with advanced features usually take 2-4 weeks. I\'ll happily prepare a custom timeline and quote — just get in touch.',
-                faq_2_q: 'What will you need from me?', faq_2_a: 'Initially, just a brief description of what you do and your goal. If you have a logo, photos, and texts, great. If not, I will help you solve it.',
-                faq_3_q: 'Can I edit the website myself?', faq_3_a: 'Yes, if you wish. Most projects include a clear administration (CMS) where you can easily edit texts, add photos, or write a blog post without programming skills.',
-                faq_4_q: 'What does the KAVKA e-shop do?', faq_4_a: 'KAVKA is my own e-shop solution. It includes a custom admin system and editor, stock tracking, cart and checkout, Zásilkovna and Balíkovna carriers via API, coupons and discount codes, order export for accounting programs, and automatic invoice generation including QR payment code.',
-                cta_title: 'Interested in working together?', cta_sub: 'Let\'s discuss your project. Email me — I offer custom websites as well as my own KAVKA e-shop solution. I\'ll gladly prepare a custom quote on request.', cta_btn: 'KAVKA e-shop',
-                footer_rights: 'All rights reserved.'
-            }
-        };
-
-        const typewriterWords = {
-            cz: ["moderní weby", "e-shopy na míru", "digitální zážitky", "čistý kód"],
-            en: ["modern websites", "custom e-shops", "digital experiences", "clean code"]
-        };
-
-        let currentLang = 'cz';
-
-        function setLang(lang, triggerBtn) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-            
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = triggerBtn || document.querySelector(`.lang-btn[data-lang="${lang}"]`);
-            if (activeBtn) activeBtn.classList.add('active');
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(translations[lang][key]) el.innerHTML = translations[lang][key];
-            });
-
-            // Restart typewriter
-            wordIndex = 0; charIndex = 0; isDeleting = false;
-        }
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                const host = (location.hostname || '').toLowerCase();
-                const isLocal = host === 'localhost' || host === '127.0.0.1';
-                if (isLocal) {
-                    navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister())).catch(e => {});
-                    if (window.caches && caches.keys) {
-                        caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))).catch(e => {});
-                    }
-                    return;
-                }
-                navigator.serviceWorker.register('/sw.js').then(reg => { reg.update(); }).catch(e => {});
-            });
-        }
-
-        // Živé náhledy referencí: iframe se načítá LÍNĚ a POUZE na desktopu.
-        // Na dotykových zařízeních (iPhone / Safari) by 5 těžkých iframeů vyčerpalo
-        // paměť a prohlížeč by reloadoval stránku. Tam iframe skryjeme a ukážeme
-        // statický náhled (obrázek) + tlačítko „Navštívit web".
-        const isTouchRef = window.matchMedia ? window.matchMedia('(hover: none), (pointer: coarse)').matches : (('ontouchstart' in window) || navigator.maxTouchPoints > 0);
-        document.querySelectorAll('iframe.lazy-iframe[data-src]').forEach(iframe => {
-            if (isTouchRef) { iframe.style.display = 'none'; return; }
-            const obs = new IntersectionObserver((entries) => {
-                if (!entries[0].isIntersecting) return;
-                iframe.src = iframe.dataset.src;
-                obs.disconnect();
-            }, { rootMargin: '300px 0px', threshold: 0.01 });
-            obs.observe(iframe);
-        });
-
-        // Timeout pro screenshoty – pokud se nenačtou do 12s, skryjeme je
-        document.querySelectorAll('.ref-preview-img').forEach(img => {
-            setTimeout(() => {
-                if (!img.classList.contains('loaded')) {
-                    img.style.display = 'none';
-                }
-            }, 12000);
-        });
-
-        let audioCtx = null;
-        function initAudio() { if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } if (audioCtx.state === 'suspended') { audioCtx.resume(); } }
-        window.addEventListener('click', initAudio, { once: true });
-        window.addEventListener('touchstart', initAudio, { once: true });
-        
-        function playSound(type) {
-            initAudio();
-            if (!audioCtx || audioCtx.state === 'suspended') return;
-            let osc = audioCtx.createOscillator(); let gain = audioCtx.createGain();
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            if (type === 'hover') { osc.type = 'sine'; osc.frequency.setValueAtTime(520, audioCtx.currentTime); gain.gain.setValueAtTime(0.004, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.04); osc.start(); osc.stop(audioCtx.currentTime + 0.04); } 
-            else if (type === 'click') { osc.type = 'triangle'; osc.frequency.setValueAtTime(280, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.12); gain.gain.setValueAtTime(0.04, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.12); osc.start(); osc.stop(audioCtx.currentTime + 0.12); }
-        }
-
-        function initParticles() {
-            const isMobileDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth <= 1024);
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); 
-            document.getElementById('particleContainer').appendChild(renderer.domElement);
-
-            const particlesCount = isMobileDevice ? 800 : 2500;
-            const posArray = new Float32Array(particlesCount * 3);
-            const colorsArray = new Float32Array(particlesCount * 3);
-            const color1 = new THREE.Color('#8b5cf6'); const color2 = new THREE.Color('#06b6d4');
-
-            for(let i = 0; i < particlesCount * 3; i+=3) {
-                posArray[i] = (Math.random() - 0.5) * 15; posArray[i+1] = (Math.random() - 0.5) * 15; posArray[i+2] = (Math.random() - 0.5) * 15;
-                const mix = Math.random(); const mixedColor = color1.clone().lerp(color2, mix);
-                colorsArray[i] = mixedColor.r; colorsArray[i+1] = mixedColor.g; colorsArray[i+2] = mixedColor.b;
-            }
-
-            const geometry = new THREE.BufferGeometry();
-            geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
-
-            const canvasTex = document.createElement('canvas'); canvasTex.width = 32; canvasTex.height = 32;
-            const ctxTex = canvasTex.getContext('2d'); const gradient = ctxTex.createRadialGradient(16, 16, 0, 16, 16, 16);
-            gradient.addColorStop(0, 'rgba(255,255,255,1)'); gradient.addColorStop(1, 'rgba(255,255,255,0)');
-            ctxTex.fillStyle = gradient; ctxTex.fillRect(0,0,32,32);
-            const texture = new THREE.CanvasTexture(canvasTex);
-
-            const material = new THREE.PointsMaterial({ size: isMobileDevice ? 0.05 : 0.08, vertexColors: true, transparent: true, opacity: 0.8, map: texture, blending: THREE.AdditiveBlending, depthWrite: false });
-            const particlesMesh = new THREE.Points(geometry, material); scene.add(particlesMesh); camera.position.z = 4;
-
-            let mouseX = 0; let mouseY = 0;
-            document.addEventListener('mousemove', (e) => { mouseX = (e.clientX / window.innerWidth - 0.5) * 2; mouseY = (e.clientY / window.innerHeight - 0.5) * 2; });
-
-            let isWebGLVisible = true;
-            const heroObserver = new IntersectionObserver((entries) => { isWebGLVisible = entries[0].isIntersecting; });
-            heroObserver.observe(document.getElementById('heroSection'));
-
-            const clock = new THREE.Clock();
-            function animate() {
-                requestAnimationFrame(animate);
-                if (!isWebGLVisible) return;
-                const elapsedTime = clock.getElapsedTime();
-                particlesMesh.rotation.y = elapsedTime * 0.05; particlesMesh.rotation.x = elapsedTime * 0.02;
-                if(!isMobileDevice) { camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05; camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.05; camera.lookAt(scene.position); }
-                renderer.render(scene, camera);
-            }
-            animate();
-            window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
-        }
-
-        function loadScriptOnce(url) {
-            return new Promise((resolve, reject) => {
-                if (document.querySelector(`script[data-src="${url}"]`)) return resolve();
-                const s = document.createElement('script');
-                s.src = url;
-                s.defer = true;
-                s.dataset.src = url;
-                s.onload = () => resolve();
-                s.onerror = () => reject(new Error(`Failed to load ${url}`));
-                document.head.appendChild(s);
-            });
-        }
-
-        function maybeInitParticles() {
-            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (reduceMotion) return;
-            if (!document.getElementById('particleContainer')) return;
-            loadScriptOnce('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
-                .then(() => { if (window.THREE) initParticles(); })
-                .catch(() => {});
-        }
-
-        const heroEl = document.getElementById('heroSection');
-        if (heroEl) {
-            const heroLoadObserver = new IntersectionObserver((entries) => {
-                if (!entries[0].isIntersecting) return;
-                const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 350));
-                idle(() => maybeInitParticles(), { timeout: 1500 });
-                heroLoadObserver.disconnect();
-            }, { rootMargin: '400px 0px', threshold: 0.01 });
-            heroLoadObserver.observe(heroEl);
-        }
-
-        // TYPEWRITER EFEKT
-        let wordIndex = 0; let charIndex = 0; let isDeleting = false;
-        const typeTarget = document.getElementById("typewriterText");
-
-        function typeEffect() {
-            const wordsList = typewriterWords[currentLang];
-            const currentWord = wordsList[wordIndex];
-            if (isDeleting) { typeTarget.textContent = currentWord.substring(0, charIndex - 1); charIndex--; } 
-            else { typeTarget.textContent = currentWord.substring(0, charIndex + 1); charIndex++; }
-
-            let typeSpeed = isDeleting ? 50 : 100;
-            if (!isDeleting && charIndex === currentWord.length) { typeSpeed = 2000; isDeleting = true; } 
-            else if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % wordsList.length; typeSpeed = 500; }
-            setTimeout(typeEffect, typeSpeed);
-        }
-        setTimeout(typeEffect, 1000);
-
-        const isMobileDeviceGlobal = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth <= 1024);
-        const containerCards = document.getElementById('parallaxContainer');
-        const panelCards = document.getElementById('mainPanel');
-        const magnetBtnWrap = document.getElementById('magnetBtnWrap');
-        const magnetBtn = document.getElementById('btnConfigurator');
-
-        document.addEventListener('mousemove', (e) => {
-            if(window.innerWidth > 1024) {
-                if(containerCards && panelCards) {
-                    const cx = window.innerWidth / 2; const cy = window.innerHeight / 2;
-                    const dx = e.clientX - cx; const dy = e.clientY - cy;
-                    containerCards.style.transform = `rotateX(${(dy / cy) * -4}deg) rotateY(${(dx / cx) * 4}deg)`;
-                    panelCards.style.boxShadow = `${(dx / cx) * -15}px ${(dy / cy) * -15}px 60px -10px rgba(0, 0, 0, 0.7)`;
-                }
-            }
-            if(e.target && e.target.closest && e.target.closest('.service-card')) {
-                let card = e.target.closest('.service-card');
-                let rect = card.getBoundingClientRect();
-                card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
-                card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
-            }
-        });
-
-        if(!isMobileDeviceGlobal && magnetBtnWrap && magnetBtn) {
-            magnetBtnWrap.addEventListener('mousemove', (e) => {
-                const rect = magnetBtnWrap.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2; const y = e.clientY - rect.top - rect.height / 2;
-                magnetBtn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.02)`;
-            });
-            magnetBtnWrap.addEventListener('mouseleave', () => { magnetBtn.style.transform = 'translate(0px, 0px) scale(1)'; });
-        }
-
-        document.querySelectorAll('a, button, input, textarea, .service-card, .info-box, .browser-mockup, .faq-question').forEach(el => {
-            el.addEventListener('mouseenter', () => { if(!isMobileDeviceGlobal) playSound('hover'); });
-            el.addEventListener('touchstart', () => { playSound('hover'); }, { passive: true });
-        });
-
-        document.querySelectorAll('.btn-configurator, .ref-visit').forEach(btn => {
-            btn.addEventListener('click', () => { 
-                playSound('click'); 
-                if (navigator.vibrate) navigator.vibrate(15); 
-            });
-        });
-
-        const reveals = document.querySelectorAll('.reveal');
-        const header = document.getElementById('mainHeader');
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-        const scrollObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
-        reveals.forEach(reveal => { scrollObserver.observe(reveal); });
-
-        if (scrollTopBtn) {
-            scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-
-        let scrollTicking = false;
-        window.addEventListener('scroll', () => {
-            if (scrollTicking) return;
-            scrollTicking = true;
-            requestAnimationFrame(() => {
-                const y = window.scrollY || 0;
-                if (header) header.classList.toggle('scrolled', y > 50);
-                if (scrollTopBtn) scrollTopBtn.classList.toggle('show', y > 600);
-                scrollTicking = false;
-            });
-        }, { passive: true });
-
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const faqItem = button.parentElement; const isActive = faqItem.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(item => { item.classList.remove('active'); item.querySelector('.faq-question').setAttribute('aria-expanded', 'false'); });
-                if (!isActive) { faqItem.classList.add('active'); button.setAttribute('aria-expanded', 'true'); playSound('click'); }
-            });
-        });
-    </script>
-
+<script>
+const i18n={en:{
+nav_services:'Services',nav_photo:'Photography',nav_work:'Work',nav_process:'Process',nav_contact:'Get in touch',hero_kicker:'Web design & photography',hero_title:'I build websites.<br><em>I capture moments.</em>',hero_text:'I help brands and people tell their story — through a clean website, a functional e-shop, or photographs you will keep coming back to.',hero_cta:'Explore my services',available:'Available for new projects',sticker:'Web<br>photo<br>& ideas',tag:'From the first pixel to the last frame.',services_kicker:'What I can do for you',services_title:'Two disciplines.<br>One signature.',services_intro:'I combine a developer’s technical thinking with an eye for composition and story. The result is a brand that works beautifully and has a face of its own.',service_web_h:'Custom websites',service_web_p:'Modern, fast and clear websites without generic templates. From first concept through development to launch and care.',service_shop_h:'KAVKA e-shops',service_shop_p:'My own e-commerce solution with admin, stock, carriers, coupons, invoices and QR payments.',service_photo_h:'Photography',service_photo_p:'Natural coverage of corporate events, weddings and family stories. Discreet, thoughtful and without unnecessary staging.',service_care_h:'Content & care',service_care_p:'Regular maintenance, optimisation, product imagery and fresh content. Your website and visuals can grow together.',photo_kicker:'Photography services',photo_title:'Real moments.<br>Honest photographs.',photo_intro:'I am not after stiff poses. I look for light, small details and moments with atmosphere. Every final image is edited in a consistent, natural style.',corp_h:'Corporate events',corp_p:'Conferences, parties, openings and behind the scenes with your team. A report that captures both atmosphere and brand.',wedding_h:'Weddings',wedding_p:'From quiet preparations to the evening celebration. I capture your day sensitively, discreetly and as a complete story.',family_h:'Family sessions',family_p:'At home or outdoors where you feel good. No stress, with room for spontaneity and genuine emotion.',photo_note:'Every assignment is quoted individually based on session length, location and final scope. Tell me a little about your idea and I will reply with a clear proposal.',photo_cta:'Enquire about a session',kavka_kicker:'My own solution',kavka_text:'An e-shop that adapts to your business — not the other way around. No dependence on a third-party template and only the features you really use.',f1:'Custom admin and editor',f2:'Stock and smart cart',f3:'Zásilkovna & Balíkovna API',f4:'Coupons and discount codes',f5:'Accounting export',f6:'Invoices and QR payments',kavka_cta:'I want my own e-shop',work_kicker:'Selected websites',work_title:'Work in the wild.',work_intro:'No concepts collecting dust. These are websites serving real businesses and their customers today.',r1:'Services, projects and a contact form.',r2:'Integrated catalogue and a polished contact flow.',r3:'Portfolio, services and an interactive map.',r4:'A catalogue for original custom production.',r5:'A modern presentation for a construction company.',next_type:'Yours could be next',next_h:'New project',next_p:'Let’s make something that works and delights.',process_kicker:'How it works',process_title:'Clear. Human. Together.',process_intro:'Whether it is a new website or a wedding day, you will always know what is happening, when it will be ready and what it will cost.',p1h:'Introduction',p1p:'You tell me your idea, goals and timing. I ask the right questions and recommend the best path.',p2h:'Plan & quote',p2p:'I prepare a clear scope, quote and schedule with no hidden surprises.',p3h:'Creation',p3p:'I design, code or photograph. We stay in touch and shape the result together as the work progresses.',p4h:'Delivery & care',p4p:'You receive a finished website or carefully edited photographs. And if you want, I remain available afterwards.',faq_title:'You might<br>be wondering…',q1:'How much does a website or session cost?',a1:'Every project is different, so I quote individually. After a short initial call, you receive a clear proposal free of charge and with no obligation.',q2:'How long does a website take?',a2:'A simple website can be ready within a week. A larger presentation or e-shop usually takes 2 to 4 weeks depending on scope and available content.',q3:'Where do you photograph?',a3:'I am happy to travel anywhere in the Czech Republic. Family sessions can take place at your home or outdoors; events and weddings at their venue.',q4:'How will I receive the photographs?',a4:'You receive a carefully selected and edited set in an online gallery, both in high resolution and in a version suitable for sharing.',q5:'Will I be able to edit the website?',a5:'Yes. If you wish, I will provide a clear admin interface and show you how to change text, photographs or products without coding.',contact_kicker:'Have an idea?',contact_title:'Let’s make it<br><em>happen.</em>',contact_text:'Tell me a little about your website, event, wedding or family session. I will get back to you and we will agree on the next step.',footer:'Web design • e-shops • photography',up:'Back to top ↑'
+}};
+let lang='cs';
+document.querySelectorAll('[data-t]').forEach(el=>el.dataset.cs=el.textContent);
+document.querySelectorAll('[data-t-html]').forEach(el=>el.dataset.csHtml=el.innerHTML);
+function setLang(next){
+  lang=next; document.documentElement.lang=next;
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===next));
+  document.querySelectorAll('[data-t]').forEach(el=>{const v=next==='cs'?el.dataset.cs:i18n[next]?.[el.dataset.t];if(v)el.textContent=v});
+  document.querySelectorAll('[data-t-html]').forEach(el=>{const v=next==='cs'?el.dataset.csHtml:i18n[next]?.[el.dataset.tHtml];if(v)el.innerHTML=v});
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item'),open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false')});if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true')}}));
+const header=document.getElementById('header');addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>30),{passive:true});
+const reveal=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');reveal.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>reveal.observe(el));
+if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
+</script>
 </body>
 </html>
